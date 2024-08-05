@@ -16,7 +16,7 @@ function l(t) {
 function A(t) {
   return l(t) && t.length === 0;
 }
-function b(t) {
+function p(t) {
   return typeof t == "function";
 }
 function f(t) {
@@ -66,17 +66,20 @@ function X(t, n) {
   return t ? t === n || t.contains(n) : !1;
 }
 function Z(t) {
-  const n = t.target ?? t.currentTarget, e = T(n);
-  return t.relatedTarget ?? e;
+  var r, o;
+  const n = (r = t.target) != null ? r : t.currentTarget, e = T(n);
+  return (o = t.relatedTarget) != null ? o : e;
 }
 function T(t) {
-  return m(t)?.activeElement;
+  var n;
+  return (n = m(t)) == null ? void 0 : n.activeElement;
 }
 function J(t) {
   return m(t).defaultView || window;
 }
 function m(t) {
-  return y(t) ? t.ownerDocument ?? document : document;
+  var n;
+  return y(t) && (n = t.ownerDocument) != null ? n : document;
 }
 function y(t) {
   return t != null && typeof t == "object" && "nodeType" in t && t.nodeType === Node.ELEMENT_NODE;
@@ -93,16 +96,16 @@ function Q(t) {
 function D(t) {
   return t.tagName === "IFRAME";
 }
-function v(t) {
+function K(t) {
   return t ? "" : void 0;
 }
-function K(t) {
+function v(t) {
   return t ? !0 : void 0;
 }
 var P = /* @__PURE__ */ ((t) => (t.ArrowDown = "ArrowDown", t.ArrowUp = "ArrowUp", t.ArrowLeft = "ArrowLeft", t.ArrowRight = "ArrowRight", t.Enter = "Enter", t.Space = " ", t.Tab = "Tab", t.Backspace = "Backspace", t.Control = "Control", t.Meta = "Meta", t.Home = "Home", t.End = "End", t.PageDown = "PageDown", t.PageUp = "PageUp", t.Delete = "Delete", t.Escape = "Escape", t.Shift = "Shift", t))(P || {});
 function tt(t, n) {
   return (e) => {
-    t(e), n?.(e);
+    t(e), n == null || n(e);
   };
 }
 function nt(t) {
@@ -174,10 +177,10 @@ function M(t) {
 function it() {
 }
 function ct(t, n) {
-  return t && (b(t) ? t(n) : t[0](t[1], n)), n?.defaultPrevented;
+  return t && (p(t) ? t(n) : t[0](t[1], n)), n == null ? void 0 : n.defaultPrevented;
 }
 function ut(t, ...n) {
-  return b(t) ? t(...n) : t;
+  return p(t) ? t(...n) : t;
 }
 function lt(t) {
   let n = !1;
@@ -217,7 +220,7 @@ function C(t, n) {
     n(o, r, t) && (e[r] = o);
   }), e;
 }
-function pt(t) {
+function bt(t) {
   return C(t, (n) => n != null);
 }
 /*!
@@ -228,12 +231,14 @@ function pt(t) {
  * https://github.com/adobe/react-spectrum/blob/cf9ab24f3255be1530d0f584061a01aa1e8180e6/packages/@react-aria/utils/src/platform.ts
  */
 function a(t) {
-  return typeof window > "u" || window.navigator == null ? !1 : window.navigator.userAgentData?.brands.some(
-    (n) => t.test(n.brand)
-  ) || t.test(window.navigator.userAgent);
+  var n;
+  return typeof window > "u" || window.navigator == null ? !1 : ((n = window.navigator.userAgentData) == null ? void 0 : n.brands.some(
+    (e) => t.test(e.brand)
+  )) || t.test(window.navigator.userAgent);
 }
 function d(t) {
-  return typeof window < "u" && window.navigator != null ? t.test(window.navigator.userAgentData?.platform || window.navigator.platform) : !1;
+  var n;
+  return typeof window < "u" && window.navigator != null ? t.test(((n = window.navigator.userAgentData) == null ? void 0 : n.platform) || window.navigator.platform) : !1;
 }
 function g() {
   return d(/^Mac/i);
@@ -247,7 +252,7 @@ function U() {
 function V() {
   return O() || U();
 }
-function bt() {
+function pt() {
   return g() || V();
 }
 function mt() {
@@ -279,28 +284,28 @@ function ht(t) {
  * https://github.com/adobe/react-spectrum/blob/main/packages/%40react-aria/focus/src/isElementVisible.ts
  */
 const w = "input:not([type='hidden']):not([disabled]), select:not([disabled]), textarea:not([disabled]), a[href], button:not([disabled]), [tabindex], iframe, object, embed, area[href], audio[controls], video[controls], [contenteditable]:not([contenteditable='false'])";
-function R(t, n) {
-  const r = Array.from(t.querySelectorAll(w)).filter(p);
-  return n && p(t) && r.unshift(t), r.forEach((o, i) => {
+function x(t, n) {
+  const r = Array.from(t.querySelectorAll(w)).filter(b);
+  return n && b(t) && r.unshift(t), r.forEach((o, i) => {
     if (D(o) && o.contentDocument) {
-      const c = o.contentDocument.body, u = R(c, !1);
+      const c = o.contentDocument.body, u = x(c, !1);
       r.splice(i, 1, ...u);
     }
   }), r;
 }
-function p(t) {
-  return x(t) && !W(t);
-}
-function x(t) {
-  return t.matches(w) && h(t);
+function b(t) {
+  return W(t) && !$(t);
 }
 function W(t) {
+  return t.matches(w) && h(t);
+}
+function $(t) {
   return parseInt(t.getAttribute("tabindex") || "0", 10) < 0;
 }
 function h(t, n) {
-  return t.nodeName !== "#comment" && $(t) && B(t, n) && (!t.parentElement || h(t.parentElement, t));
+  return t.nodeName !== "#comment" && B(t) && F(t, n) && (!t.parentElement || h(t.parentElement, t));
 }
-function $(t) {
+function B(t) {
   if (!(t instanceof HTMLElement) && !(t instanceof SVGElement))
     return !1;
   const { display: n, visibility: e } = t.style;
@@ -313,40 +318,40 @@ function $(t) {
   }
   return r;
 }
-function B(t, n) {
+function F(t, n) {
   return !t.hasAttribute("hidden") && (t.nodeName === "DETAILS" && n && n.nodeName !== "SUMMARY" ? t.hasAttribute("open") : !0);
 }
 export {
   P as EventKeys,
   et as access,
   rt as accessWith,
-  K as ariaAttr,
+  v as ariaAttr,
   ct as callHandler,
   nt as chain,
   X as contains,
-  v as dataAttr,
+  K as dataAttr,
   ft as delve,
-  pt as filterUndefined,
+  bt as filterUndefined,
   j as flatten,
   ot as focusWithoutScrolling,
   T as getActiveElement,
-  R as getAllTabbableIn,
+  x as getAllTabbableIn,
   z as getLastItem,
   m as getOwnerDocument,
   Z as getRelatedTarget,
   Q as getScrollParent,
   J as getWindow,
   gt as isAndroid,
-  bt as isAppleDevice,
+  pt as isAppleDevice,
   l as isArray,
   H as isChrome,
   y as isElement,
   q as isEmpty,
   A as isEmptyArray,
   E as isEmptyObject,
-  x as isFocusable,
+  W as isFocusable,
   D as isFrame,
-  b as isFunction,
+  p as isFunction,
   V as isIOS,
   U as isIPad,
   O as isIPhone,
@@ -355,7 +360,7 @@ export {
   _ as isNumber,
   f as isObject,
   S as isString,
-  p as isTabbable,
+  b as isTabbable,
   mt as isWebKit,
   tt as mergeRefs,
   it as noop,

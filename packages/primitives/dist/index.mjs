@@ -1,18 +1,18 @@
-import { createSignal as f, createMemo as T, untrack as z, createEffect as b, onCleanup as d, on as U, sharedConfig as j, onMount as G, getOwner as O, DEV as K, createRoot as M, mergeProps as J } from "solid-js";
-import { isServer as E } from "solid-js/web";
-function q(t) {
+import { createSignal as d, createMemo as x, untrack as z, createEffect as S, onCleanup as E, on as j, sharedConfig as M, onMount as G, getOwner as A, DEV as K, createRoot as q, mergeProps as J } from "solid-js";
+import { isServer as b } from "solid-js/web";
+function B(t) {
   return Object.prototype.toString.call(t) === "[object String]";
 }
 function Z(t) {
   const e = window.getComputedStyle(t);
   return /(auto|scroll)/.test(e.overflow + e.overflowX + e.overflowY);
 }
-function B(t) {
+function W(t) {
   for (; t && !Z(t); )
     t = t.parentElement;
   return t || document.scrollingElement || document.documentElement;
 }
-function D(t) {
+function p(t) {
   return (...e) => {
     for (const n of t)
       typeof n == "function" && n(...e);
@@ -22,57 +22,75 @@ var i = (t) => typeof t == "function" && !t.length ? t() : t;
 function tt(t, ...e) {
   return typeof t == "function" ? t(...e) : t;
 }
-function A(t) {
-  return typeof window < "u" && window.navigator != null ? t.test(window.navigator.userAgentData?.platform || window.navigator.platform) : !1;
+function I(t) {
+  var e;
+  return typeof window < "u" && window.navigator != null ? t.test(((e = window.navigator.userAgentData) == null ? void 0 : e.platform) || window.navigator.platform) : !1;
 }
 function et() {
-  return A(/^Mac/i);
+  return I(/^Mac/i);
 }
 function nt() {
-  return A(/^iPhone/i);
+  return I(/^iPhone/i);
 }
 function ot() {
-  return A(/^iPad/i) || et() && navigator.maxTouchPoints > 1;
+  return I(/^iPad/i) || et() && navigator.maxTouchPoints > 1;
 }
 function rt() {
   return nt() || ot();
 }
 function k(t) {
-  return q(t) ? t : void 0;
+  return B(t) ? t : void 0;
 }
-function W(t) {
-  const [e, n] = f(t.defaultValue?.()), o = T(() => t.value?.() !== void 0), r = T(() => o() ? t.value?.() : e());
-  return [r, (c) => {
+function H(t) {
+  var c;
+  const [e, n] = d((c = t.defaultValue) == null ? void 0 : c.call(t)), r = x(() => {
+    var a;
+    return ((a = t.value) == null ? void 0 : a.call(t)) !== void 0;
+  }), o = x(() => {
+    var a;
+    return r() ? (a = t.value) == null ? void 0 : a.call(t) : e();
+  });
+  return [o, (a) => {
     z(() => {
-      const m = tt(c, r());
-      return Object.is(m, r()) || (o() || n(m), t.onChange?.(m)), m;
+      var g;
+      const m = tt(a, o());
+      return Object.is(m, o()) || (r() || n(m), (g = t.onChange) == null || g.call(t, m)), m;
     });
   }];
 }
 function it(t) {
-  const [e, n] = W(t);
-  return [() => e() ?? !1, n];
+  const [e, n] = H(t);
+  return [() => {
+    var o;
+    return (o = e()) != null ? o : !1;
+  }, n];
 }
-function Tt(t) {
-  const [e, n] = W(t);
-  return [() => e() ?? [], n];
+function bt(t) {
+  const [e, n] = H(t);
+  return [() => {
+    var o;
+    return (o = e()) != null ? o : [];
+  }, n];
 }
-function bt(t = {}) {
+function xt(t = {}) {
   const [e, n] = it({
     value: () => i(t.isOpen),
     defaultValue: () => !!i(t.defaultIsOpen),
-    onChange: (c) => t.onOpenChange?.(c)
-  }), o = () => {
+    onChange: (c) => {
+      var a;
+      return (a = t.onOpenChange) == null ? void 0 : a.call(t, c);
+    }
+  }), r = () => {
     n(!0);
-  }, r = () => {
+  }, o = () => {
     n(!1);
   };
   return {
     isOpen: e,
-    open: o,
-    close: r,
+    open: r,
+    close: o,
     toggle: () => {
-      e() ? r() : o();
+      e() ? o() : r();
     }
   };
 }
@@ -83,18 +101,20 @@ function bt(t = {}) {
  * Credits to the React Spectrum team:
  * https://github.com/adobe/react-spectrum/blob/main/packages/%40react-aria/interactions/src/useInteractOutside.ts
  */
-function xt(t, e) {
-  const [n, o] = f(!1);
-  b(() => {
+function St(t, e) {
+  const [n, r] = d(!1);
+  S(() => {
     if (i(t.isDisabled))
       return;
-    const r = (c) => {
-      P(c, e()) && (t.onInteractOutsideStart?.(c), o(!0));
-    }, l = (c) => {
-      n() && P(c, e()) && (o(!1), t.onInteractOutside?.(c));
+    const o = (c) => {
+      var a;
+      P(c, e()) && ((a = t.onInteractOutsideStart) == null || a.call(t, c), r(!0));
+    }, f = (c) => {
+      var a;
+      n() && P(c, e()) && (r(!1), (a = t.onInteractOutside) == null || a.call(t, c));
     };
-    document.addEventListener("pointerdown", r, !0), document.addEventListener("pointerup", l, !0), d(() => {
-      document.removeEventListener("pointerdown", r, !0), document.removeEventListener("pointerup", l, !0);
+    document.addEventListener("pointerdown", o, !0), document.addEventListener("pointerup", f, !0), E(() => {
+      document.removeEventListener("pointerdown", o, !0), document.removeEventListener("pointerup", f, !0);
     });
   });
 }
@@ -106,7 +126,7 @@ function P(t, e) {
     if (!n || !n.documentElement.contains(t.target))
       return !1;
   }
-  return !e?.contains(t.target);
+  return !(e != null && e.contains(t.target));
 }
 /*!
  * Portions of this file are based on code from react-spectrum.
@@ -115,7 +135,7 @@ function P(t, e) {
  * Credits to the React Spectrum team:
  * https://github.com/adobe/react-spectrum/blob/892d41e82dc781fb4651455d0e29c324376659ed/packages/@react-aria/overlays/src/usePreventScroll.ts
  */
-const S = typeof window < "u" && window.visualViewport, at = /* @__PURE__ */ new Set([
+const Y = typeof window < "u" && window.visualViewport, at = /* @__PURE__ */ new Set([
   "checkbox",
   "radio",
   "range",
@@ -126,99 +146,99 @@ const S = typeof window < "u" && window.visualViewport, at = /* @__PURE__ */ new
   "submit",
   "reset"
 ]);
-function St(t) {
-  b(
-    U(
+function Dt(t) {
+  S(
+    j(
       () => i(t.isEnabled),
       (e) => {
-        !e || (rt() ? d(st()) : d(ct()));
+        !e || (rt() ? E(st()) : E(ct()));
       }
     )
   );
 }
 function ct() {
-  return D([
-    y(
+  return p([
+    T(
       document.documentElement,
       "paddingRight",
       `${window.innerWidth - document.documentElement.clientWidth}px`
     ),
-    y(document.documentElement, "overflow", "hidden")
+    T(document.documentElement, "overflow", "hidden")
   ]);
 }
 function st() {
   let t, e = 0;
-  const n = (u) => {
-    t = B(u.target), !(t === document.documentElement && t === document.body) && (e = u.changedTouches[0].pageY);
-  }, o = (u) => {
+  const n = (l) => {
+    t = W(l.target), !(t === document.documentElement && t === document.body) && (e = l.changedTouches[0].pageY);
+  }, r = (l) => {
     if (t === document.documentElement || t === document.body) {
-      u.preventDefault();
+      l.preventDefault();
       return;
     }
-    const a = u.changedTouches[0].pageY, s = t.scrollTop, h = t.scrollHeight - t.clientHeight;
-    (s <= 0 && a > e || s >= h && a < e) && u.preventDefault(), e = a;
-  }, r = (u) => {
-    const a = u.target;
-    R(a) && a !== document.activeElement && (u.preventDefault(), a.style.transform = "translateY(-2000px)", a.focus(), requestAnimationFrame(() => {
-      a.style.transform = "";
+    const s = l.changedTouches[0].pageY, u = t.scrollTop, w = t.scrollHeight - t.clientHeight;
+    (u <= 0 && s > e || u >= w && s < e) && l.preventDefault(), e = s;
+  }, o = (l) => {
+    const s = l.target;
+    R(s) && s !== document.activeElement && (l.preventDefault(), s.style.transform = "translateY(-2000px)", s.focus(), requestAnimationFrame(() => {
+      s.style.transform = "";
     }));
-  }, l = (u) => {
-    const a = u.target;
-    R(a) && (a.style.transform = "translateY(-2000px)", requestAnimationFrame(() => {
-      a.style.transform = "", S && (S.height < window.innerHeight ? requestAnimationFrame(() => {
-        N(a);
-      }) : S.addEventListener("resize", () => N(a), { once: !0 }));
+  }, f = (l) => {
+    const s = l.target;
+    R(s) && (s.style.transform = "translateY(-2000px)", requestAnimationFrame(() => {
+      s.style.transform = "", Y && (Y.height < window.innerHeight ? requestAnimationFrame(() => {
+        N(s);
+      }) : Y.addEventListener("resize", () => N(s), { once: !0 }));
     }));
   }, c = () => {
     window.scrollTo(0, 0);
-  }, m = window.pageXOffset, v = window.pageYOffset, g = D([
-    y(
+  }, a = window.pageXOffset, m = window.pageYOffset, g = p([
+    T(
       document.documentElement,
       "paddingRight",
       `${window.innerWidth - document.documentElement.clientWidth}px`
     ),
-    y(document.documentElement, "overflow", "hidden"),
-    y(document.body, "marginTop", `-${v}px`)
+    T(document.documentElement, "overflow", "hidden"),
+    T(document.body, "marginTop", `-${m}px`)
   ]);
   window.scrollTo(0, 0);
-  const x = D([
-    p(document, "touchstart", n, {
+  const D = p([
+    v(document, "touchstart", n, {
       passive: !1,
       capture: !0
     }),
-    p(document, "touchmove", o, {
+    v(document, "touchmove", r, {
       passive: !1,
       capture: !0
     }),
-    p(document, "touchend", r, {
+    v(document, "touchend", o, {
       passive: !1,
       capture: !0
     }),
-    p(document, "focus", l, !0),
-    p(window, "scroll", c)
+    v(document, "focus", f, !0),
+    v(window, "scroll", c)
   ]);
   return () => {
-    g(), x(), window.scrollTo(m, v);
+    g(), D(), window.scrollTo(a, m);
   };
 }
-function y(t, e, n) {
-  const o = t.style[e];
+function T(t, e, n) {
+  const r = t.style[e];
   return t.style[e] = n, () => {
-    t.style[e] = o;
+    t.style[e] = r;
   };
 }
-function p(t, e, n, o) {
-  return t.addEventListener(e, n, o), () => {
-    t.removeEventListener(e, n, o);
+function v(t, e, n, r) {
+  return t.addEventListener(e, n, r), () => {
+    t.removeEventListener(e, n, r);
   };
 }
 function N(t) {
   const e = document.scrollingElement || document.documentElement;
   for (; t && t !== e; ) {
-    const n = B(t);
+    const n = W(t);
     if (n !== document.documentElement && n !== document.body && n !== t) {
-      const o = n.getBoundingClientRect().top, r = t.getBoundingClientRect().top;
-      r > o + t.clientHeight && (n.scrollTop += r - o);
+      const r = n.getBoundingClientRect().top, o = t.getBoundingClientRect().top;
+      o > r + t.clientHeight && (n.scrollTop += o - r);
     }
     t = n.parentElement;
   }
@@ -226,41 +246,41 @@ function N(t) {
 function R(t) {
   return t instanceof HTMLInputElement && !at.has(t.type) || t instanceof HTMLTextAreaElement || t instanceof HTMLElement && t.isContentEditable;
 }
-var ut = !E, lt = ut && !!K, ft = lt ? (t) => O() ? d(t) : t : d;
+var ut = !b, lt = ut && !!K, ft = lt ? (t) => A() ? E(t) : t : E;
 function mt(t, e, n) {
-  if (E)
-    return f(t, n);
-  if (j.context) {
-    const [o, r] = f(t, n);
-    return G(() => r(() => e())), [o, r];
+  if (b)
+    return d(t, n);
+  if (M.context) {
+    const [r, o] = d(t, n);
+    return G(() => o(() => e())), [r, o];
   }
-  return f(e(), n);
+  return d(e(), n);
 }
-function dt(t, e, n, o) {
-  return t.addEventListener(e, n, o), ft(t.removeEventListener.bind(t, e, n, o));
+function dt(t, e, n, r) {
+  return t.addEventListener(e, n, r), ft(t.removeEventListener.bind(t, e, n, r));
 }
-function gt(t, e = O()) {
-  let n = 0, o, r;
-  return () => (n++, d(() => {
+function gt(t, e = A()) {
+  let n = 0, r, o;
+  return () => (n++, E(() => {
     n--, queueMicrotask(() => {
-      !n && r && (r(), r = o = void 0);
+      !n && o && (o(), o = r = void 0);
     });
-  }), r || M((l) => o = t(r = l), e), o);
-}
-function pt(t) {
-  const e = O(), n = gt(t, e);
-  return () => E || j.context ? M(t, e) : n();
-}
-function $(t, e = !1) {
-  if (E)
-    return () => e;
-  const n = window.matchMedia(t), [o, r] = mt(e, () => n.matches);
-  return dt(n, "change", () => r(n.matches)), o;
+  }), o || q((f) => r = t(o = f), e), r);
 }
 function wt(t) {
+  const e = A(), n = gt(t, e);
+  return () => b || M.context ? q(t, e) : n();
+}
+function $(t, e = !1) {
+  if (b)
+    return () => e;
+  const n = window.matchMedia(t), [r, o] = mt(e, () => n.matches);
+  return dt(n, "change", () => o(n.matches)), r;
+}
+function Et(t) {
   return $("(prefers-color-scheme: dark)", t);
 }
-wt.bind(void 0, !1);
+Et.bind(void 0, !1);
 function yt(t, e) {
   return $("(prefers-reduced-motion: reduce)", t);
 }
@@ -271,10 +291,11 @@ function yt(t, e) {
  * Credits to the Ariakit team:
  * https://github.com/ariakit/ariakit/blob/main/packages/ariakit-utils/src/hooks.ts
  */
-function Dt(t, e) {
-  const [n, o] = f(k(e?.()));
-  return b(() => {
-    o(t()?.tagName.toLowerCase() || k(e?.()));
+function Yt(t, e) {
+  const [n, r] = d(k(e == null ? void 0 : e()));
+  return S(() => {
+    var o;
+    r(((o = t()) == null ? void 0 : o.tagName.toLowerCase()) || k(e == null ? void 0 : e()));
   }), n;
 }
 /*!
@@ -284,10 +305,10 @@ function Dt(t, e) {
  * Credits to the Mantinedev team:
  * https://github.com/mantinedev/mantine/blob/8546c580fdcaa9653edc6f4813103349a96cfb09/src/mantine-core/src/Transition/transitions.ts
  */
-const w = {
+const h = {
   in: { opacity: 1, transform: "scale(1)" },
   out: { opacity: 0, transform: "scale(0.9) translateY(10px)" }
-}, Y = {
+}, O = {
   fade: {
     in: { opacity: 1 },
     out: { opacity: 0 }
@@ -348,28 +369,28 @@ const w = {
     common: { "transform-origin": "right" }
   },
   pop: {
-    ...w,
+    ...h,
     common: { "transform-origin": "center center" }
   },
   "pop-bottom-left": {
-    ...w,
+    ...h,
     common: { "transform-origin": "bottom left" }
   },
   "pop-bottom-right": {
-    ...w,
+    ...h,
     common: { "transform-origin": "bottom right" }
   },
   "pop-top-left": {
-    ...w,
+    ...h,
     out: { opacity: 0, transform: "scale(0.9) translateY(-10px)" },
     common: { "transform-origin": "top left" }
   },
   "pop-top-right": {
-    ...w,
+    ...h,
     out: { opacity: 0, transform: "scale(0.9) translateY(-10px)" },
     common: { "transform-origin": "top right" }
   }
-}, Yt = Object.keys(Y);
+}, pt = Object.keys(O);
 /*!
  * Portions of this file are based on code from mantinedev.
  * MIT Licensed, Copyright (c) 2021 Vitaly Rtishchev.
@@ -377,7 +398,7 @@ const w = {
  * Credits to the Mantinedev team:
  * https://github.com/mantinedev/mantine/blob/8546c580fdcaa9653edc6f4813103349a96cfb09/src/mantine-core/src/Transition/get-transition-styles/get-transition-styles.ts
  */
-const H = {
+const V = {
   beforeEnter: "out",
   enter: "in",
   afterEnter: "in",
@@ -385,30 +406,30 @@ const H = {
   exit: "out",
   afterExit: "out"
 };
-function Et(t) {
+function vt(t) {
   const e = {
     "transition-duration": `${t.duration}ms`,
     "transition-timing-function": t.easing
   };
-  if (q(t.transition)) {
-    if (!(t.transition in Y))
+  if (B(t.transition)) {
+    if (!(t.transition in O))
       return {};
-    const n = Y[t.transition];
+    const n = O[t.transition];
     return {
-      "transition-property": V(n),
+      "transition-property": _(n),
       ...e,
       ...n.common,
-      ...n[H[t.phase]]
+      ...n[V[t.phase]]
     };
   }
   return {
-    "transition-property": V(t.transition),
+    "transition-property": _(t.transition),
     ...e,
     ...t.transition.common,
-    ...t.transition[H[t.phase]]
+    ...t.transition[V[t.phase]]
   };
 }
-function V(t) {
+function _(t) {
   return [
     .../* @__PURE__ */ new Set([...Object.keys(t.in), ...Object.keys(t.out)])
   ].join(", ");
@@ -420,73 +441,73 @@ function V(t) {
  * Credits to the Mantinedev team:
  * https://github.com/mantinedev/mantine/blob/8546c580fdcaa9653edc6f4813103349a96cfb09/src/mantine-core/src/Transition/use-transition.ts
  */
-const _ = 250, X = 10, F = "ease";
+const X = 250, F = 10, U = "ease";
 function Ot(t, e) {
   e = J(
     {
       transition: "fade",
-      duration: _,
-      delay: X,
-      easing: F,
+      duration: X,
+      delay: F,
+      easing: U,
       get exitDuration() {
-        return i(e).duration || _;
+        return i(e).duration || X;
       },
       get exitDelay() {
-        return i(e).delay || X;
+        return i(e).delay || F;
       },
       get exitEasing() {
-        return i(e).easing || F;
+        return i(e).easing || U;
       }
     },
     e
   );
-  const n = yt(), [o, r] = f(n() ? 0 : i(e).duration), [l, c] = f(
+  const n = yt(), [r, o] = d(n() ? 0 : i(e).duration), [f, c] = d(
     i(t) ? "afterEnter" : "afterExit"
-  ), [m, v] = f(i(e).easing);
+  ), [a, m] = d(i(e).easing);
   let g = -1;
-  const x = (s) => {
-    const h = s ? i(e).onBeforeEnter : i(e).onBeforeExit, I = s ? i(e).onAfterEnter : i(e).onAfterExit;
-    c(s ? "beforeEnter" : "beforeExit"), window.clearTimeout(g);
-    const L = r(
-      n() ? 0 : s ? i(e).duration : i(e).exitDuration
+  const D = (u) => {
+    const w = u ? i(e).onBeforeEnter : i(e).onBeforeExit, y = u ? i(e).onAfterEnter : i(e).onAfterExit;
+    c(u ? "beforeEnter" : "beforeExit"), window.clearTimeout(g);
+    const L = o(
+      n() ? 0 : u ? i(e).duration : i(e).exitDuration
     );
-    if (v(s ? i(e).easing : i(e).exitEasing), L === 0) {
-      h?.(), I?.(), c(s ? "afterEnter" : "afterExit");
+    if (m(u ? i(e).easing : i(e).exitEasing), L === 0) {
+      w == null || w(), y == null || y(), c(u ? "afterEnter" : "afterExit");
       return;
     }
-    const C = n() ? 0 : s ? i(e).delay : i(e).exitDelay, Q = window.setTimeout(() => {
-      h?.(), c(s ? "enter" : "exit");
+    const C = n() ? 0 : u ? i(e).delay : i(e).exitDelay, Q = window.setTimeout(() => {
+      w == null || w(), c(u ? "enter" : "exit");
     }, C);
     g = window.setTimeout(() => {
-      window.clearTimeout(Q), I?.(), c(s ? "afterEnter" : "afterExit");
+      window.clearTimeout(Q), y == null || y(), c(u ? "afterEnter" : "afterExit");
     }, C + L);
-  }, u = T(
-    () => Et({
+  }, l = x(
+    () => vt({
       transition: i(e).transition,
-      duration: o(),
-      phase: l(),
-      easing: m()
+      duration: r(),
+      phase: f(),
+      easing: a()
     })
-  ), a = T(() => l() !== "afterExit");
-  return b(
-    U(
+  ), s = x(() => f() !== "afterExit");
+  return S(
+    j(
       () => i(t),
-      (s) => x(s),
+      (u) => D(u),
       { defer: !0 }
     )
-  ), d(() => {
-    E || window.clearTimeout(g);
-  }), { keepMounted: a, style: u };
+  ), E(() => {
+    b || window.clearTimeout(g);
+  }), { keepMounted: s, style: l };
 }
 export {
-  Yt as DEFAULT_TRANSITIONS_NAMES,
-  Tt as createControllableArraySignal,
+  pt as DEFAULT_TRANSITIONS_NAMES,
+  bt as createControllableArraySignal,
   it as createControllableBooleanSignal,
-  W as createControllableSignal,
-  bt as createDisclosure,
-  xt as createInteractOutside,
-  St as createPreventScroll,
+  H as createControllableSignal,
+  xt as createDisclosure,
+  St as createInteractOutside,
+  Dt as createPreventScroll,
   yt as createReducedMotion,
-  Dt as createTagName,
+  Yt as createTagName,
   Ot as createTransition
 };

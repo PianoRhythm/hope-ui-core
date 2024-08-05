@@ -16,7 +16,8 @@ export default defineConfig({
   ],
 
   build: {
-    target: "esnext",
+    minify: true,
+    reportCompressedSize: true,
     lib: {
       entry: "src/index.tsx",
       formats: ["es", "cjs"],
@@ -27,7 +28,7 @@ export default defineConfig({
         ...Object.keys(pkg.dependencies),
         ...Object.keys(pkg.peerDependencies),
         "solid-js",
-        // "solid-js/web",
+        "solid-js/web",
         "solid-js/store",
       ],
     },

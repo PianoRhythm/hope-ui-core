@@ -26,7 +26,11 @@
     ".": {
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs",
-      "types": "./dist/index.d.ts"
+      "types": "./dist/index.d.ts",
+      "browser": {
+        "import": "./dist/index.mjs",
+        "require": "./dist/index.cjs"
+      }
     }
   },
   "main": "./dist/index.cjs",
@@ -66,7 +70,7 @@
     "storybook-dark-mode": "1.1.2"
   },
   "peerDependencies": {
-    "solid-js": "^1.6.1"
+    "solid-js": "^1.8.18"
   },
   "publishConfig": {
     "access": "public"
