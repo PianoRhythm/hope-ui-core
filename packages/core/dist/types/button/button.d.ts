@@ -5,9 +5,8 @@
  * Credits to the Chakra UI team:
  * https://github.com/chakra-ui/chakra-ui/blob/7d7e04d53d871e324debe0a2cb3ff44d7dbf3bca/packages/components/button/src/button.tsx
  */
-import { ButtonProps } from "./types";
 /**
  * Button is used to trigger an action or event,
  * such as submitting a form, opening a dialog, canceling an action, or performing a delete operation.
  */
-export declare const Button: import("@hope-ui/styles").HopeComponent<"button", ButtonProps>;
+export declare const Button: any;

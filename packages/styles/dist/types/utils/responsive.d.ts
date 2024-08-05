@@ -21,6 +21,6 @@ export declare function objectToArrayNotation(obj: Dict, breakpoints: string[]):
  * @example
  * arrayToObjectNotation([1, 2, 3]) // => { base: 1, sm: 2, md: 3 }
  */
-export declare function arrayToObjectNotation(values: any[], breakpoints: string[]): Dict<any>;
+export declare function arrayToObjectNotation(values: any[], breakpoints: string[]): Dict;
 /** Return whether an object is a valid responsive object according to the breakpoints. */
 export declare function isResponsiveObjectLike(obj: Dict, breakpoints: string[]): boolean;

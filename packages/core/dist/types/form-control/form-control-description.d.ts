@@ -1,1 +1,1 @@
-export declare const FormControlDescription: import("@hope-ui/styles").HopeComponent<"div", {}>;
+export declare const FormControlDescription: any;

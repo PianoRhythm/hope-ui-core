@@ -5,7 +5,7 @@ export declare function createModal(props: BaseModalProps): {
     setHeadingId: import("solid-js").Setter<string>;
     descriptionId: import("solid-js").Accessor<string>;
     setDescriptionId: import("solid-js").Setter<string>;
-    overlayTransition: import("@hope-ui/primitives").TransitionResult;
+    overlayTransition: any;
     onContainerMouseDown: JSX.EventHandler<HTMLElement, MouseEvent>;
     onContainerKeyDown: JSX.EventHandler<HTMLElement, KeyboardEvent>;
     onContainerClick: JSX.EventHandler<HTMLElement, MouseEvent>;

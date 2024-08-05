@@ -5,7 +5,6 @@
  * Credits to the Chakra UI team:
  * https://github.com/chakra-ui/chakra-ui/blob/9de39921b983ad0eb2df7195e3b683c2e2e9e290/packages/components/styled-system/src/utils/expand-responsive.ts
  */
-import { Dict } from "@hope-ui/utils";
 import { Theme } from "../types";
 /**
  * Expands responsive array/object syntax and color mode syntax.
@@ -32,4 +31,4 @@ import { Theme } from "../types";
  *   }
  * }
  */
-export declare const expandSyntax: (styles: Dict) => (theme: Theme) => Dict<any>;
+export declare const expandSyntax: (styles: Dict) => (theme: Theme) => any;

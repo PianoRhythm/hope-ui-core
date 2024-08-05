@@ -13,5 +13,5 @@ export declare type HeadingTheme = ComponentTheme<HeadingProps, "level" | "size"
  * Headings are used for rendering headlines.
  * It renders an <h2> tag by default.
  */
-export declare const Heading: import("@hope-ui/styles").HopeComponent<"h2", HeadingProps>;
+export declare const Heading: any;
 export {};

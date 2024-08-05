@@ -8,4 +8,4 @@
 /**
  * PopoverArrow renders an arrow inside a `Popover` component.
  */
-export declare const PopoverArrow: import("@hope-ui/styles").HopeComponent<"div", {}>;
+export declare const PopoverArrow: any;

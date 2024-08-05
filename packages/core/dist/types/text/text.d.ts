@@ -9,4 +9,4 @@ export declare type TextTheme = ComponentTheme<TextProps, "size">;
  * Text component is the used to render text and paragraphs within an interface.
  * It renders a <p> tag by default.
  */
-export declare const Text: import("@hope-ui/styles").HopeComponent<"p", TextProps>;
+export declare const Text: any;

@@ -5,9 +5,8 @@
  * Credits to the Chakra UI team:
  * https://github.com/chakra-ui/chakra-ui/blob/7d7e04d53d871e324debe0a2cb3ff44d7dbf3bca/packages/components/button/src/icon-button.tsx
  */
-import { IconButtonProps } from "./types";
 /**
  * IconButton composes the Button component except that it renders only an icon.
  * Since IconButton only renders an icon, you must pass the aria-label prop, so screen readers can give meaning to the button.
  */
-export declare const IconButton: import("@hope-ui/styles").HopeComponent<"button", IconButtonProps>;
+export declare const IconButton: any;

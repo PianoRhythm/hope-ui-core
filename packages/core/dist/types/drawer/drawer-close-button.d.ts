@@ -6,4 +6,4 @@ export declare type DrawerCloseButtonProps = CloseButtonProps;
  * You don't need to pass the `onClick` to it, it gets the
  * `close` action from the drawer context.
  */
-export declare const DrawerCloseButton: import("@hope-ui/styles").HopeComponent<"button", CloseButtonProps>;
+export declare const DrawerCloseButton: any;

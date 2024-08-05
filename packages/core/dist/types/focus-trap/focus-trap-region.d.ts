@@ -35,4 +35,4 @@ export interface FocusTrapRegionProps extends ParentProps {
  * `FocusTrapRegion` traps focus within itself.
  * It renders a `div` by default.
  */
-export declare const FocusTrapRegion: import("@hope-ui/styles").HopeComponent<"div", FocusTrapRegionProps>;
+export declare const FocusTrapRegion: any;

@@ -5,4 +5,4 @@
  *
  * It renders a `p` by default.
  */
-export declare const ModalDescription: import("@hope-ui/styles").HopeComponent<"p", {}>;
+export declare const ModalDescription: any;

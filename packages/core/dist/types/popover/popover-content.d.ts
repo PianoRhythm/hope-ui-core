@@ -6,4 +6,4 @@ export interface PopoverContentProps {
 /**
  * The popover content wrapper.
  */
-export declare const PopoverContent: import("@hope-ui/styles").HopeComponent<"section", PopoverContentProps>;
+export declare const PopoverContent: any;

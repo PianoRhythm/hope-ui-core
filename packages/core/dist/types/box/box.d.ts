@@ -9,4 +9,4 @@
  * `Box` is the most abstract component on top of which other hope ui
  * components are built. It renders a `div` element by default.
  */
-export declare const Box: import("@hope-ui/styles").HopeComponent<"div", import("@hope-ui/styles").HopeVariantSelection<{}>>;
+export declare const Box: any;

@@ -13,4 +13,4 @@ export declare type KbdTheme = ComponentTheme<KbdProps>;
 /**
  * `Kbd` is a semantic component used to render keyboard shortcut.
  */
-export declare const Kbd: import("@hope-ui/styles").HopeComponent<"kbd", KbdProps>;
+export declare const Kbd: any;

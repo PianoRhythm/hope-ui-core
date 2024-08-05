@@ -6,4 +6,4 @@ export interface DrawerContentProps {
 /**
  * The drawer content wrapper.
  */
-export declare const DrawerContent: import("@hope-ui/styles").HopeComponent<"section", DrawerContentProps>;
+export declare const DrawerContent: any;

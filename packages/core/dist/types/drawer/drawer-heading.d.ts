@@ -5,4 +5,4 @@
  *
  * It renders an `h2` by default.
  */
-export declare const DrawerHeading: import("@hope-ui/styles").HopeComponent<"h2", {}>;
+export declare const DrawerHeading: any;

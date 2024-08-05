@@ -6,4 +6,4 @@ export declare type ModalCloseButtonProps = CloseButtonProps;
  * You don't need to pass the `onClick` to it, it gets the
  * `close` action from the modal context.
  */
-export declare const ModalCloseButton: import("@hope-ui/styles").HopeComponent<"button", CloseButtonProps>;
+export declare const ModalCloseButton: any;

@@ -26,4 +26,4 @@ export interface GridItemProps {
  * `GridItem` is used as a child of `Grid` to control the span,
  * start and end positions within the grid.
  */
-export declare const GridItem: import("@hope-ui/styles").HopeComponent<"div", GridItemProps>;
+export declare const GridItem: any;

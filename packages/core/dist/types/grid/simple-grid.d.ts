@@ -26,4 +26,4 @@ export interface SimpleGridProps extends GridProps {
  * `SimpleGrid` uses the `Grid` component and provides a simpler interface to create responsive grid layouts.
  * Provides props that easily define columns and spacing.
  */
-export declare const SimpleGrid: import("@hope-ui/styles").HopeComponent<"div", SimpleGridProps>;
+export declare const SimpleGrid: any;

@@ -14,13 +14,13 @@ export declare function toMediaQueryString(min: string | null, max?: string): st
 export declare function analyzeBreakpoints(breakpoints: Dict): {
     keys: Set<string>;
     normalized: string[];
-    asObject: Dict<any>;
+    asObject: Dict;
     asArray: string[];
     details: {
         _minW: string;
         breakpoint: string;
-        minW: any;
-        maxW: any;
+        minW: unknown;
+        maxW: unknown;
         maxWQuery: string;
         minWQuery: string;
         minMaxQuery: string;
@@ -28,6 +28,6 @@ export declare function analyzeBreakpoints(breakpoints: Dict): {
     medias: string[];
     isResponsive(test: Dict): boolean;
     toArrayValue(test: Dict): any[];
-    toObjectValue(test: any[]): Dict<any>;
+    toObjectValue(test: any[]): Dict;
 };
 export declare type AnalyzeBreakpointsReturn = ReturnType<typeof analyzeBreakpoints>;

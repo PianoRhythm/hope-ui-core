@@ -7,7 +7,7 @@
  */
 import { ResponsiveValue } from "@hope-ui/styles";
 import { ComponentProps } from "solid-js";
-declare const BaseAspectRatio: import("@hope-ui/styles").HopeComponent<"div", import("@hope-ui/styles").HopeVariantSelection<{}>>;
+declare const BaseAspectRatio: any;
 export interface AspectRatioProps extends ComponentProps<typeof BaseAspectRatio> {
     /**
      * The aspect ratio of the Box.
@@ -19,5 +19,5 @@ export interface AspectRatioProps extends ComponentProps<typeof BaseAspectRatio>
  * `AspectRatio` is used to cropping media (videos, images and maps)
  * to a desired aspect ratio.
  */
-export declare const AspectRatio: import("@hope-ui/styles").HopeComponent<"div", AspectRatioProps>;
+export declare const AspectRatio: any;
 export {};

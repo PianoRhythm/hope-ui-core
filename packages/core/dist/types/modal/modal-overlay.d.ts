@@ -6,4 +6,4 @@ export interface ModalOverlayProps {
 /**
  * `ModalOverlay` renders a backdrop that is typically displayed behind a modal.
  */
-export declare const ModalOverlay: import("@hope-ui/styles").HopeComponent<"div", ModalOverlayProps>;
+export declare const ModalOverlay: any;

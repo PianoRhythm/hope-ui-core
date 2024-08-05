@@ -11,4 +11,4 @@ export declare type CloseButtonTheme = ComponentTheme<CloseButtonProps, "size">;
 /**
  * A button with a close icon, used to handle the close functionality in feedback and overlay components.
  */
-export declare const CloseButton: import("@hope-ui/styles").HopeComponent<"button", CloseButtonProps>;
+export declare const CloseButton: any;

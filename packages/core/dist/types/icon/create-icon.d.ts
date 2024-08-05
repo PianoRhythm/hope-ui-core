@@ -18,5 +18,5 @@ interface CreateIconOptions {
     /** Default props automatically passed to the component. */
     defaultProps?: IconProps;
 }
-export declare function createIcon(options: CreateIconOptions): import("@hope-ui/styles").HopeComponent<"svg", IconProps>;
+export declare function createIcon(options: CreateIconOptions): any;
 export {};

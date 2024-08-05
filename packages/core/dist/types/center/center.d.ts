@@ -9,4 +9,4 @@
  * `Center` is used to horizontally and vertically center its child.
  * It uses the popular `display: flex` centering technique.
  */
-export declare const Center: import("@hope-ui/styles").HopeComponent<"div", import("@hope-ui/styles").HopeVariantSelection<{}>>;
+export declare const Center: any;

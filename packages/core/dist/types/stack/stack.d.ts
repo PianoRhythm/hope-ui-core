@@ -25,7 +25,7 @@ export interface StackProps {
 /**
  * `Stack` makes it easy to stack elements together and apply a space between them.
  */
-export declare const Stack: import("@hope-ui/styles").HopeComponent<"div", StackProps>;
+export declare const Stack: any;
 export interface FixedDirectionStackProps extends Omit<StackProps, "direction" | "flexDirection"> {
     /** Whether the direction should be reversed. */
     reverse?: ResponsiveValue<boolean>;
@@ -33,8 +33,8 @@ export interface FixedDirectionStackProps extends Omit<StackProps, "direction" |
 /**
  * `HStack` arranges its children in a horizontal line.
  */
-export declare const HStack: import("@hope-ui/styles").HopeComponent<"div", FixedDirectionStackProps>;
+export declare const HStack: any;
 /**
  * `VStack` arranges its children in a vertical line.
  */
-export declare const VStack: import("@hope-ui/styles").HopeComponent<"div", FixedDirectionStackProps>;
+export declare const VStack: any;

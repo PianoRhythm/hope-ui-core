@@ -14,4 +14,4 @@ export interface AnchorProps extends AnchorStyleConfigProps {
  * Anchors are accessible elements used primarily for navigation.
  * This component is styled to resemble a hyperlink and semantically renders an <a>.
  */
-export declare const Anchor: import("@hope-ui/styles").HopeComponent<"a", AnchorProps>;
+export declare const Anchor: any;

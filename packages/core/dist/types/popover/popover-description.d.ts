@@ -5,4 +5,4 @@
  *
  * It renders a `p` by default.
  */
-export declare const PopoverDescription: import("@hope-ui/styles").HopeComponent<"p", {}>;
+export declare const PopoverDescription: any;

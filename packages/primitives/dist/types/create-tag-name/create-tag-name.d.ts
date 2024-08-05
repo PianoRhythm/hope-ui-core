@@ -15,4 +15,4 @@ import { Accessor, Component } from "solid-js";
  *   return <div ref={ref} {...props} />;
  * }
  */
-export declare function createTagName(ref: Accessor<HTMLElement | undefined>, type?: Accessor<string | Component | undefined>): Accessor<string>;
+export declare function createTagName(ref: Accessor<HTMLElement | undefined>, type?: Accessor<string | Component | undefined>): Accessor<any>;

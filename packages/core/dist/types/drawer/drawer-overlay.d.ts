@@ -6,4 +6,4 @@ export interface DrawerOverlayProps {
 /**
  * `DrawerOverlay` renders a backdrop that is typically displayed behind a drawer.
  */
-export declare const DrawerOverlay: import("@hope-ui/styles").HopeComponent<"div", DrawerOverlayProps>;
+export declare const DrawerOverlay: any;

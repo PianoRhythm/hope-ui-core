@@ -7,4 +7,4 @@
  */
 import { JSX } from "solid-js";
 export declare type IconProps = JSX.SvgSVGAttributes<SVGSVGElement>;
-export declare const Icon: import("@hope-ui/styles").HopeComponent<"svg", IconProps>;
+export declare const Icon: any;

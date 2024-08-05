@@ -6,5 +6,5 @@ export interface DrawerVariants {
     /** The placement of the drawer. */
     placement: "top" | "right" | "bottom" | "left";
 }
-export declare const useDrawerStyleConfig: import("@hope-ui/styles").UseStyleConfigFn<DrawerParts, DrawerVariants>;
+export declare const useDrawerStyleConfig: any;
 export declare type DrawerStyleConfigProps = StyleConfigProps<typeof useDrawerStyleConfig>;

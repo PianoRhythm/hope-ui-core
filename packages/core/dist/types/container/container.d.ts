@@ -7,15 +7,7 @@
  */
 import { ResponsiveValue } from "@hope-ui/styles";
 import { ComponentProps } from "solid-js";
-declare const BaseContainer: import("@hope-ui/styles").HopeComponent<"div", import("@hope-ui/styles").HopeVariantSelection<{
-    centerContent: {
-        true: {
-            display: "flex";
-            flexDirection: "column";
-            alignItems: "center";
-        };
-    };
-}>>;
+declare const BaseContainer: any;
 export interface ContainerProps extends ComponentProps<typeof BaseContainer> {
     /** Whether the container itself should be centered on the page. */
     isCentered?: ResponsiveValue<boolean>;
@@ -24,5 +16,5 @@ export interface ContainerProps extends ComponentProps<typeof BaseContainer> {
  * `Container` is used to constrain a content's width to the current breakpoint, while keeping it fluid.
  *  By default, it sets `margin-left` and `margin-right` to `auto`, to keep its content centered.
  */
-export declare const Container: import("@hope-ui/styles").HopeComponent<"div", ContainerProps>;
+export declare const Container: any;
 export {};

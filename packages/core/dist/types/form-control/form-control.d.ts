@@ -1,8 +1,5 @@
 import { ComponentTheme } from "@hope-ui/styles";
 import { FormControlStyleConfigProps } from "./form-control.styles";
-import { FormControlDescription } from "./form-control-description";
-import { FormControlError } from "./form-control-error";
-import { FormControlLabel } from "./form-control-label";
 export interface FormControlProps extends FormControlStyleConfigProps {
     /** The `id` to use for the form control element (e.g, Input, TextArea). */
     id?: string;
@@ -16,10 +13,4 @@ export interface FormControlProps extends FormControlStyleConfigProps {
     isInvalid?: boolean;
 }
 export declare type FormControlTheme = ComponentTheme<FormControlProps, "withRequiredIndicator">;
-declare type FormControlComposite = {
-    Label: typeof FormControlLabel;
-    Description: typeof FormControlDescription;
-    Error: typeof FormControlError;
-};
-export declare const FormControl: import("@hope-ui/styles").HopeComponent<"div", FormControlProps> & FormControlComposite;
-export {};
+export declare const FormControl: any;

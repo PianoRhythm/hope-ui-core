@@ -5,4 +5,4 @@
  *
  * It renders a `p` by default.
  */
-export declare const DrawerDescription: import("@hope-ui/styles").HopeComponent<"p", {}>;
+export declare const DrawerDescription: any;

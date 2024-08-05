@@ -36,11 +36,10 @@ export declare type ImageProps = OverrideProps<ImageOptions, CreateImageLoadingS
 /**
  * Image renders an image with support for fallbacks.
  */
-export declare const Image: import("@hope-ui/styles").HopeComponent<"img", ImageProps>;
-declare type Img = Pick<ImageProps, "htmlWidth" | "htmlHeight">;
+export declare const Image: any;
 /**
  * Fallback component for most SSR users who want to use the native `img` with
  * Hope UI styling features.
  */
-export declare const Img: import("@hope-ui/styles").HopeComponent<"img", Img>;
+export declare const Img: any;
 export {};

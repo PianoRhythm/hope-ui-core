@@ -20,4 +20,4 @@ export interface FlexProps {
  * `Flex` is used to create flexbox layouts.
  * It renders a `div` with `display: flex` and comes with helpful style shorthand.
  */
-export declare const Flex: import("@hope-ui/styles").HopeComponent<"div", FlexProps>;
+export declare const Flex: any;

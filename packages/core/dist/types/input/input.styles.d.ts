@@ -8,5 +8,5 @@ export interface InputVariants {
 }
 export declare const INPUT_DEFAULT_VARIANTS: StyleConfigVariantSelection<InputVariants>;
 export declare const INPUT_SIZES: Record<InputVariants["size"], SystemStyleObject>;
-export declare const useInputStyleConfig: import("@hope-ui/styles").UseStyleConfigFn<"root", InputVariants>;
+export declare const useInputStyleConfig: any;
 export declare type InputStyleConfigProps = StyleConfigProps<typeof useInputStyleConfig>;

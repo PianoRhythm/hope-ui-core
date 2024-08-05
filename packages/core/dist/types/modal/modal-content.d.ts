@@ -6,4 +6,4 @@ export interface ModalContentProps {
 /**
  * The modal content wrapper.
  */
-export declare const ModalContent: import("@hope-ui/styles").HopeComponent<"section", ModalContentProps>;
+export declare const ModalContent: any;
