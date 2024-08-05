@@ -1,3 +1,4 @@
+export * from "@hope-ui/primitives";
 export * from "@hope-ui/styles";
 export * from "./color-mode";
 export * from "./provider";
