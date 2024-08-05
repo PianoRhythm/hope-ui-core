@@ -149,9 +149,6 @@ importers:
       '@hope-ui/primitives':
         specifier: github:PianoRhythm/hope-ui-core#main&path:packages/primitives
         version: https://codeload.github.com/PianoRhythm/hope-ui-core/tar.gz/a2da4f42e34a138641974528157b30b297465ef0#path:packages/primitives(solid-js@1.6.1)
-      '@hope-ui/styles':
-        specifier: file:../../packages/styles
-        version: file:packages/styles(@stitches/core@1.2.8)(clsx@1.2.1)(solid-js@1.6.1)
       '@hope-ui/utils':
         specifier: github:PianoRhythm/hope-ui-core#main&path:packages/utils
         version: https://codeload.github.com/PianoRhythm/hope-ui-core/tar.gz/a2da4f42e34a138641974528157b30b297465ef0#path:packages/utils(solid-js@1.6.1)
@@ -159,6 +156,9 @@ importers:
         specifier: ^1.6.1
         version: 1.6.1
     devDependencies:
+      '@hope-ui/styles':
+        specifier: file:../../packages/styles
+        version: file:packages/styles(@stitches/core@1.2.8)(clsx@1.2.1)(solid-js@1.6.1)
       '@hope-ui/tests':
         specifier: file:../../packages/tests
         version: link:../tests
