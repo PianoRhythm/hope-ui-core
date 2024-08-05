@@ -62,28 +62,6 @@ interface HeaderProps {
 function Header(props: HeaderProps) {
   return (
     <Box pos="sticky" top={0} zIndex="sticky">
-      <Box bg="common.background">
-        <HStack
-          fontSize="sm"
-          fontWeight="medium"
-          lineHeight={5}
-          px={2}
-          py={1}
-          spacing={1}
-          bg="danger.600"
-          color="white"
-          _dark={{
-            bg: theme => rgba(theme.vars.colors.danger.darkChannel, 0.4),
-            color: "danger.400",
-          }}
-        >
-          <ExclamationTriangleIcon fontSize="1.3em" />
-          <span>
-            You are looking at the documentation of the <em>work in progress</em> Hope UI{" "}
-            <strong>1.0</strong>, examples and information may be broken or outdated.
-          </span>
-        </HStack>
-      </Box>
       <StyledHeader>
         <Flex d={{ lg: "none" }} mr={4}>
           <MobileNavigation sections={props.navSections} />

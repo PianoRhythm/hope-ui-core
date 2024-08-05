@@ -50,12 +50,12 @@
   },
   "dependencies": {
     "@floating-ui/dom": "^1.0.4",
-    "@hope-ui/primitives": "^1.0.0-next.11",
-    "@hope-ui/styles": "^1.0.0-next.11",
-    "@hope-ui/utils": "^1.0.0-next.11"
+    "@hope-ui/primitives": "file:../../packages/primitives",
+    "@hope-ui/styles": "file:../../packages/styles",
+    "@hope-ui/utils": "file:../../packages/utils"
   },
   "devDependencies": {
-    "@hope-ui/tests": "1.0.0-next.11",
+    "@hope-ui/tests": "file:../../packages/tests",
     "@storybook/addon-a11y": "6.5.10",
     "@storybook/addon-actions": "6.5.10",
     "@storybook/addon-essentials": "6.5.10",
