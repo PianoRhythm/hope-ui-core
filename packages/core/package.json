@@ -44,13 +44,13 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@floating-ui/dom": "^1.0.4",
-    "@hope-ui/primitives": "github:PianoRhythm/hope-ui-core#main&path:packages/primitives",
-    "@hope-ui/utils": "github:PianoRhythm/hope-ui-core#main&path:packages/utils"
+    "@floating-ui/dom": "^1.0.4"
   },
   "devDependencies": {
     "@hope-ui/styles": "file:../../packages/styles",
     "@hope-ui/tests": "file:../../packages/tests",
+    "@hope-ui/utils": "file:../../packages/utils",
+    "@hope-ui/primitives": "file:../../packages/primitives",
     "@storybook/addon-a11y": "6.5.10",
     "@storybook/addon-actions": "6.5.10",
     "@storybook/addon-essentials": "6.5.10",

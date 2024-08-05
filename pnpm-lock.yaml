@@ -146,22 +146,22 @@ importers:
       '@floating-ui/dom':
         specifier: ^1.0.4
         version: 1.6.8
-      '@hope-ui/primitives':
-        specifier: github:PianoRhythm/hope-ui-core#main&path:packages/primitives
-        version: https://codeload.github.com/PianoRhythm/hope-ui-core/tar.gz/a2da4f42e34a138641974528157b30b297465ef0#path:packages/primitives(solid-js@1.6.1)
-      '@hope-ui/utils':
-        specifier: github:PianoRhythm/hope-ui-core#main&path:packages/utils
-        version: https://codeload.github.com/PianoRhythm/hope-ui-core/tar.gz/a2da4f42e34a138641974528157b30b297465ef0#path:packages/utils(solid-js@1.6.1)
       solid-js:
         specifier: ^1.6.1
         version: 1.6.1
     devDependencies:
+      '@hope-ui/primitives':
+        specifier: file:../../packages/primitives
+        version: link:../primitives
       '@hope-ui/styles':
         specifier: file:../../packages/styles
-        version: file:packages/styles(@stitches/core@1.2.8)(clsx@1.2.1)(solid-js@1.6.1)
+        version: link:../styles
       '@hope-ui/tests':
         specifier: file:../../packages/tests
         version: link:../tests
+      '@hope-ui/utils':
+        specifier: file:../../packages/utils
+        version: link:../utils
       '@storybook/addon-a11y':
         specifier: 6.5.10
         version: 6.5.10(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
@@ -231,9 +231,6 @@ importers:
 
   packages/primitives:
     dependencies:
-      '@hope-ui/utils':
-        specifier: github:PianoRhythm/hope-ui-core#main&path:packages/utils
-        version: https://codeload.github.com/PianoRhythm/hope-ui-core/tar.gz/a2da4f42e34a138641974528157b30b297465ef0#path:packages/utils(solid-js@1.6.1)
       '@solid-primitives/media':
         specifier: ^2.0.4
         version: 2.2.9(solid-js@1.6.1)
@@ -242,14 +239,14 @@ importers:
         version: 1.6.1
     devDependencies:
       '@hope-ui/tests':
-        specifier: file:../../packages/mdx
-        version: link:../mdx
+        specifier: file:../../packages/tests
+        version: link:../tests
+      '@hope-ui/utils':
+        specifier: file:../../packages/utils
+        version: link:../utils
 
   packages/styles:
     dependencies:
-      '@hope-ui/utils':
-        specifier: github:PianoRhythm/hope-ui-core#main&path:packages/utils
-        version: https://codeload.github.com/PianoRhythm/hope-ui-core/tar.gz/a2da4f42e34a138641974528157b30b297465ef0#path:packages/utils(solid-js@1.6.1)
       '@stitches/core':
         specifier: ^1.2.8
         version: 1.2.8
@@ -262,6 +259,10 @@ importers:
       solid-js:
         specifier: ^1.6.1
         version: 1.6.1
+    devDependencies:
+      '@hope-ui/utils':
+        specifier: file:../../packages/utils
+        version: link:../utils
 
   packages/tests:
     dependencies:
@@ -1179,31 +1180,6 @@ packages:
 
   '@gar/promisify@1.1.3':
     resolution: {integrity: sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==}
-
-  '@hope-ui/primitives@https://codeload.github.com/PianoRhythm/hope-ui-core/tar.gz/a2da4f42e34a138641974528157b30b297465ef0#path:packages/primitives':
-    resolution: {path: packages/primitives, tarball: https://codeload.github.com/PianoRhythm/hope-ui-core/tar.gz/a2da4f42e34a138641974528157b30b297465ef0}
-    version: 1.0.0-next.11
-    peerDependencies:
-      solid-js: ^1.6.1
-
-  '@hope-ui/styles@file:packages/styles':
-    resolution: {directory: packages/styles, type: directory}
-    peerDependencies:
-      '@stitches/core': ^1.2.8
-      clsx: ^1.2.1
-      solid-js: ^1.6.1
-
-  '@hope-ui/utils@https://codeload.github.com/PianoRhythm/hope-ui-core/tar.gz/7e5e89de642f9bfc57de50023fe6a071bb3ac686#path:packages/utils':
-    resolution: {path: packages/utils, tarball: https://codeload.github.com/PianoRhythm/hope-ui-core/tar.gz/7e5e89de642f9bfc57de50023fe6a071bb3ac686}
-    version: 1.0.0-next.11
-    peerDependencies:
-      solid-js: ^1.6.1
-
-  '@hope-ui/utils@https://codeload.github.com/PianoRhythm/hope-ui-core/tar.gz/a2da4f42e34a138641974528157b30b297465ef0#path:packages/utils':
-    resolution: {path: packages/utils, tarball: https://codeload.github.com/PianoRhythm/hope-ui-core/tar.gz/a2da4f42e34a138641974528157b30b297465ef0}
-    version: 1.0.0-next.11
-    peerDependencies:
-      solid-js: ^1.6.1
 
   '@humanwhocodes/config-array@0.9.5':
     resolution: {integrity: sha512-ObyMyWxZiCu/yTisA7uzx81s40xR2fD5Cg/2Kq7G02ajkNubJf6BopgDTmDyc3U7sXpNKM8cYOw7s7Tyr+DnCw==}
@@ -9790,32 +9766,6 @@ snapshots:
   '@floating-ui/utils@0.2.5': {}
 
   '@gar/promisify@1.1.3': {}
-
-  '@hope-ui/primitives@https://codeload.github.com/PianoRhythm/hope-ui-core/tar.gz/a2da4f42e34a138641974528157b30b297465ef0#path:packages/primitives(solid-js@1.6.1)':
-    dependencies:
-      '@hope-ui/utils': https://codeload.github.com/PianoRhythm/hope-ui-core/tar.gz/a2da4f42e34a138641974528157b30b297465ef0#path:packages/utils(solid-js@1.6.1)
-      '@solid-primitives/media': 2.2.9(solid-js@1.6.1)
-      solid-js: 1.6.1
-
-  '@hope-ui/styles@file:packages/styles(@stitches/core@1.2.8)(clsx@1.2.1)(solid-js@1.6.1)':
-    dependencies:
-      '@hope-ui/utils': https://codeload.github.com/PianoRhythm/hope-ui-core/tar.gz/7e5e89de642f9bfc57de50023fe6a071bb3ac686#path:packages/utils(solid-js@1.6.1)
-      '@stitches/core': 1.2.8
-      clsx: 1.2.1
-      dset: 3.1.2
-      solid-js: 1.6.1
-
-  '@hope-ui/utils@https://codeload.github.com/PianoRhythm/hope-ui-core/tar.gz/7e5e89de642f9bfc57de50023fe6a071bb3ac686#path:packages/utils(solid-js@1.6.1)':
-    dependencies:
-      '@solid-primitives/refs': 0.3.7(solid-js@1.6.1)
-      '@solid-primitives/utils': 4.0.1(solid-js@1.6.1)
-      solid-js: 1.6.1
-
-  '@hope-ui/utils@https://codeload.github.com/PianoRhythm/hope-ui-core/tar.gz/a2da4f42e34a138641974528157b30b297465ef0#path:packages/utils(solid-js@1.6.1)':
-    dependencies:
-      '@solid-primitives/refs': 0.3.7(solid-js@1.6.1)
-      '@solid-primitives/utils': 4.0.1(solid-js@1.6.1)
-      solid-js: 1.6.1
 
   '@humanwhocodes/config-array@0.9.5':
     dependencies:

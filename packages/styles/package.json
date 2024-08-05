@@ -43,8 +43,10 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@hope-ui/utils": "github:PianoRhythm/hope-ui-core#main&path:packages/utils",
     "dset": "3.1.2"
+  },
+  "devDependencies": {
+    "@hope-ui/utils": "file:../../packages/utils"
   },
   "peerDependencies": {
     "@stitches/core": "^1.2.8",
