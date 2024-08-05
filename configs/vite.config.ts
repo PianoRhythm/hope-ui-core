@@ -5,7 +5,7 @@ import pkg from "../packages/core/package.json";
 
 export default defineConfig({
   plugins: [
-    solidPlugin(),
+    solidPlugin({ ssr: true }),
     dts({
       tsConfigFilePath: "tsconfig.build.json",
       insertTypesEntry: true,
@@ -18,6 +18,7 @@ export default defineConfig({
   build: {
     minify: true,
     reportCompressedSize: true,
+    ssr: true,
     lib: {
       entry: "src/index.tsx",
       formats: ["es", "cjs"],
@@ -34,3 +35,11 @@ export default defineConfig({
     },
   },
 });
+
+// export default defineConfig({
+//   plugins: [solidPlugin()],
+//   build: {
+//     target: "esnext",
+
+//   },
+// });
