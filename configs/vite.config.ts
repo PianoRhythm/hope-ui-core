@@ -17,7 +17,9 @@ export default defineConfig({
       logDiagnostics: true,
     }),
   ],
+
   build: {
+    target: "esnext",
     lib: {
       entry: "src/index.tsx",
       formats: ["es", "cjs"],
