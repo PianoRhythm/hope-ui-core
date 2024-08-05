@@ -150,8 +150,8 @@ importers:
         specifier: github:PianoRhythm/hope-ui-core#main&path:packages/primitives
         version: https://codeload.github.com/PianoRhythm/hope-ui-core/tar.gz/a2da4f42e34a138641974528157b30b297465ef0#path:packages/primitives(solid-js@1.6.1)
       '@hope-ui/styles':
-        specifier: github:PianoRhythm/hope-ui-core#main&path:packages/styles
-        version: https://codeload.github.com/PianoRhythm/hope-ui-core/tar.gz/a2da4f42e34a138641974528157b30b297465ef0#path:packages/styles(@stitches/core@1.2.8)(clsx@1.2.1)(solid-js@1.6.1)
+        specifier: file:../../packages/styles
+        version: file:packages/styles(@stitches/core@1.2.8)(clsx@1.2.1)(solid-js@1.6.1)
       '@hope-ui/utils':
         specifier: github:PianoRhythm/hope-ui-core#main&path:packages/utils
         version: https://codeload.github.com/PianoRhythm/hope-ui-core/tar.gz/a2da4f42e34a138641974528157b30b297465ef0#path:packages/utils(solid-js@1.6.1)
@@ -1186,12 +1186,17 @@ packages:
     peerDependencies:
       solid-js: ^1.6.1
 
-  '@hope-ui/styles@https://codeload.github.com/PianoRhythm/hope-ui-core/tar.gz/a2da4f42e34a138641974528157b30b297465ef0#path:packages/styles':
-    resolution: {path: packages/styles, tarball: https://codeload.github.com/PianoRhythm/hope-ui-core/tar.gz/a2da4f42e34a138641974528157b30b297465ef0}
-    version: 1.0.0-next.11
+  '@hope-ui/styles@file:packages/styles':
+    resolution: {directory: packages/styles, type: directory}
     peerDependencies:
       '@stitches/core': ^1.2.8
       clsx: ^1.2.1
+      solid-js: ^1.6.1
+
+  '@hope-ui/utils@https://codeload.github.com/PianoRhythm/hope-ui-core/tar.gz/7e5e89de642f9bfc57de50023fe6a071bb3ac686#path:packages/utils':
+    resolution: {path: packages/utils, tarball: https://codeload.github.com/PianoRhythm/hope-ui-core/tar.gz/7e5e89de642f9bfc57de50023fe6a071bb3ac686}
+    version: 1.0.0-next.11
+    peerDependencies:
       solid-js: ^1.6.1
 
   '@hope-ui/utils@https://codeload.github.com/PianoRhythm/hope-ui-core/tar.gz/a2da4f42e34a138641974528157b30b297465ef0#path:packages/utils':
@@ -4526,9 +4531,6 @@ packages:
 
   github-slugger@1.4.0:
     resolution: {integrity: sha512-w0dzqw/nt51xMVmlaV1+JRzN+oCa1KfcgGEWhxUG16wbdA+Xnt/yoFO8Z8x/V82ZcZ0wy6ln9QDup5avbhiDhQ==}
-
-  github-slugger@1.5.0:
-    resolution: {integrity: sha512-wIh+gKBI9Nshz2o46B0B3f5k/W+WI9ZAv6y5Dn5WJ5SK1t0TnDimB4WE5rmTD05ZAIn8HALCZVmCsvj0w0v0lw==}
 
   glob-parent@3.1.0:
     resolution: {integrity: sha512-E8Ak/2+dZY6fnzlR7+ueWvhsH1SjHr4jjss4YS/h4py44jY9MhK/VFdaZJAWDz6BbL21KeteKxFSFpq8OS5gVA==}
@@ -9795,12 +9797,18 @@ snapshots:
       '@solid-primitives/media': 2.2.9(solid-js@1.6.1)
       solid-js: 1.6.1
 
-  '@hope-ui/styles@https://codeload.github.com/PianoRhythm/hope-ui-core/tar.gz/a2da4f42e34a138641974528157b30b297465ef0#path:packages/styles(@stitches/core@1.2.8)(clsx@1.2.1)(solid-js@1.6.1)':
+  '@hope-ui/styles@file:packages/styles(@stitches/core@1.2.8)(clsx@1.2.1)(solid-js@1.6.1)':
     dependencies:
-      '@hope-ui/utils': https://codeload.github.com/PianoRhythm/hope-ui-core/tar.gz/a2da4f42e34a138641974528157b30b297465ef0#path:packages/utils(solid-js@1.6.1)
+      '@hope-ui/utils': https://codeload.github.com/PianoRhythm/hope-ui-core/tar.gz/7e5e89de642f9bfc57de50023fe6a071bb3ac686#path:packages/utils(solid-js@1.6.1)
       '@stitches/core': 1.2.8
       clsx: 1.2.1
       dset: 3.1.2
+      solid-js: 1.6.1
+
+  '@hope-ui/utils@https://codeload.github.com/PianoRhythm/hope-ui-core/tar.gz/7e5e89de642f9bfc57de50023fe6a071bb3ac686#path:packages/utils(solid-js@1.6.1)':
+    dependencies:
+      '@solid-primitives/refs': 0.3.7(solid-js@1.6.1)
+      '@solid-primitives/utils': 4.0.1(solid-js@1.6.1)
       solid-js: 1.6.1
 
   '@hope-ui/utils@https://codeload.github.com/PianoRhythm/hope-ui-core/tar.gz/a2da4f42e34a138641974528157b30b297465ef0#path:packages/utils(solid-js@1.6.1)':
@@ -11937,9 +11945,9 @@ snapshots:
       acorn: 7.4.1
       acorn-walk: 7.2.0
 
-  acorn-import-attributes@1.9.5(acorn@8.12.1):
+  acorn-import-attributes@1.9.5(acorn@8.8.0):
     dependencies:
-      acorn: 8.12.1
+      acorn: 8.8.0
 
   acorn-jsx@5.3.2(acorn@8.12.1):
     dependencies:
@@ -14529,8 +14537,6 @@ snapshots:
 
   github-slugger@1.4.0: {}
 
-  github-slugger@1.5.0: {}
-
   glob-parent@3.1.0:
     dependencies:
       is-glob: 3.1.0
@@ -15790,7 +15796,7 @@ snapshots:
   jsdom@19.0.0:
     dependencies:
       abab: 2.0.6
-      acorn: 8.12.1
+      acorn: 8.8.0
       acorn-globals: 6.0.0
       cssom: 0.5.0
       cssstyle: 2.3.0
@@ -17632,7 +17638,7 @@ snapshots:
 
   remark-slug@6.1.0:
     dependencies:
-      github-slugger: 1.5.0
+      github-slugger: 1.4.0
       mdast-util-to-string: 1.1.0
       unist-util-visit: 2.0.3
 
@@ -18438,7 +18444,7 @@ snapshots:
 
   terser@4.8.1:
     dependencies:
-      acorn: 8.12.1
+      acorn: 8.8.0
       commander: 2.20.3
       source-map: 0.6.1
       source-map-support: 0.5.21
@@ -18568,7 +18574,7 @@ snapshots:
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
       '@types/node': 20.5.1
-      acorn: 8.12.1
+      acorn: 8.8.0
       acorn-walk: 8.3.3
       arg: 4.1.3
       create-require: 1.1.1
@@ -19178,8 +19184,8 @@ snapshots:
       '@webassemblyjs/ast': 1.12.1
       '@webassemblyjs/wasm-edit': 1.12.1
       '@webassemblyjs/wasm-parser': 1.12.1
-      acorn: 8.12.1
-      acorn-import-attributes: 1.9.5(acorn@8.12.1)
+      acorn: 8.8.0
+      acorn-import-attributes: 1.9.5(acorn@8.8.0)
       browserslist: 4.23.3
       chrome-trace-event: 1.0.4
       enhanced-resolve: 5.17.1
