@@ -1,0 +1,1 @@
+export HUSKY=0 # Husky won't install and won't run hooks on your machine
