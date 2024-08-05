@@ -1,0 +1,1 @@
+{"version":3,"file":"optional-portal.d.ts","sourceRoot":"","sources":["optional-portal.tsx"],"names":[],"mappings":"AAAA,OAAO,EAAE,cAAc,EAAoB,MAAM,UAAU,CAAC;AAC5D,OAAO,EAAE,MAAM,EAAE,MAAM,cAAc,CAAC;AAEtC,MAAM,WAAW,mBAAoB,SAAQ,cAAc,CAAC,OAAO,MAAM,CAAC;IACxE,8DAA8D;IAC9D,YAAY,CAAC,EAAE,OAAO,CAAC;CACxB;AAED;;;GAGG;AACH,wBAAgB,cAAc,CAAC,KAAK,EAAE,mBAAmB,kCAQxD"}

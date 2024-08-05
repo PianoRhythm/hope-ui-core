@@ -1,3 +1,3 @@
-import _default from './src/index'
+import _default from './index'
 export default _default
-export * from './src/index'
+export * from './index'
