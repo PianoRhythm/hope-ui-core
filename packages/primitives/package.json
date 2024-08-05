@@ -47,7 +47,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@hope-ui/utils": "^1.0.0-next.11",
+    "@hope-ui/utils": "github:PianoRhythm/hope-ui-core#main&path:packages/utils",
     "@solid-primitives/media": "^2.0.4"
   },
   "devDependencies": {

@@ -50,9 +50,9 @@
   },
   "dependencies": {
     "@floating-ui/dom": "^1.0.4",
-    "@hope-ui/primitives": "file:../../packages/primitives",
-    "@hope-ui/styles": "file:../../packages/styles",
-    "@hope-ui/utils": "file:../../packages/utils"
+    "@hope-ui/primitives": "github:PianoRhythm/hope-ui-core#main&path:packages/primitives",
+    "@hope-ui/styles": "github:PianoRhythm/hope-ui-core#main&path:packages/styles",
+    "@hope-ui/utils": "github:PianoRhythm/hope-ui-core#main&path:packages/utils"
   },
   "devDependencies": {
     "@hope-ui/tests": "file:../../packages/tests",
