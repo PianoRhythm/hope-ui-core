@@ -1,10 +1,7 @@
-import path from "path";
 import { defineConfig } from "vite";
 import solidPlugin from "vite-plugin-solid";
 import dts from "vite-plugin-dts";
 import pkg from "../packages/core/package.json";
-
-console.log("DIR", __dirname);
 
 export default defineConfig({
   plugins: [
