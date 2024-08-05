@@ -3,7 +3,7 @@
   "include": [
     "./src",
     "./dev",
-    "vite.config.ts",
+    "../../configs/vite.config.ts",
     "package.json"
   ],
   "exclude": [

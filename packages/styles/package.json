@@ -41,7 +41,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "rollup -c ../../configs/rollup.config.ts",
+    "build": "vite build --config ../../configs/vite.config.ts",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
     "dev": "vite serve dev --host",
     "test": "jest",
