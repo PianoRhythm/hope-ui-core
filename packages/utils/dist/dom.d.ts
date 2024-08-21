@@ -33,4 +33,5 @@ export declare function dataAttr(condition: boolean | undefined): "" | undefined
  * Return `true` (to apply the aria attribute) if the condition is met, `undefined` otherwise.
  */
 export declare function ariaAttr(condition: boolean | undefined): true | undefined;
+export declare function isValidEvent(event: any, element?: HTMLElement): boolean;
 //# sourceMappingURL=dom.d.ts.map

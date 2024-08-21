@@ -1,15 +1,94 @@
-import { isArray as Ie, isObject as H, objectKeys as Be, getLastItem as je, runIfFn as S, isNumber as Se, delve as ze, flatten as re, unflatten as Ae, pick as We, once as q, filterUndefined as Q, isEmptyObject as ye, pack as He } from "@hope-ui/utils";
-import { pack as Ot } from "@hope-ui/utils";
-import { createStitches as Me } from "@stitches/core";
-import { dset as se } from "dset/merge";
-import { createComponent as ve, Dynamic as Fe, mergeProps as De, useAssets as Ge, ssr as Ue, ssrHydrationKey as Xe } from "solid-js/web";
-import { createContext as Ke, useContext as Qe, createMemo as R, mergeProps as Ye, splitProps as ke } from "solid-js";
-import { clsx as ue } from "clsx";
-const qe = Me({ prefix: "hope" }), { css: Ce, globalCss: ce, getCssText: Je, keyframes: Re } = qe, le = {
+import { createStitches as Be } from "@stitches/core";
+import { dset as ae } from "dset/merge";
+import { createComponent as Se, Dynamic as Ae, mergeProps as Ie, useAssets as ze, ssr as We, ssrHydrationKey as He } from "solid-js/web";
+import { createContext as Me, useContext as Fe, createMemo as R, mergeProps as De, splitProps as ve } from "solid-js";
+import { clsx as ce } from "clsx";
+/*!
+ * Original code by Chakra UI
+ * MIT Licensed, Copyright (c) 2019 Segun Adebayo.
+ *
+ * Credits to the Chakra UI team:
+ * https://github.com/chakra-ui/chakra-ui/blob/main/packages/utils/src/assertion.ts
+ */
+function ke(e) {
+  return typeof e == "number";
+}
+function J(e) {
+  return Array.isArray(e);
+}
+function Ge(e) {
+  return typeof e == "function";
+}
+function T(e) {
+  const r = typeof e;
+  return e != null && (r === "object" || r === "function") && !J(e);
+}
+function Ce(e) {
+  return T(e) && Object.keys(e).length === 0;
+}
+/*!
+ * Original code by Chakra UI
+ * MIT Licensed, Copyright (c) 2019 Segun Adebayo.
+ *
+ * Credits to the Chakra UI team:
+ * https://github.com/chakra-ui/chakra-ui/blob/main/packages/utils/src/array.ts
+ */
+function Ue(e) {
+  const r = e == null ? 0 : e.length;
+  return r ? e[r - 1] : void 0;
+}
+function Xe(e) {
+  return e == null ? [] : J(e) ? e : [e];
+}
+function y(e, ...r) {
+  return Ge(e) ? e(...r) : e;
+}
+function Z(e) {
+  let r = !1;
+  return function(...t) {
+    r || (r = !0, e(...t));
+  };
+}
+function K(e, r, t = 1 / 0) {
+  return !T(e) && !Array.isArray(e) || !t ? e : Object.entries(e).reduce((o, [n, i]) => (T(i) || J(i) ? Object.entries(K(i, r, t - 1)).forEach(([s, u]) => {
+    o[`${n}${r}${s}`] = u;
+  }) : o[n] = i, o), {});
+}
+function Ke(e, r) {
+  return Object.keys(e).reduce((t, o) => (o.split(r).reduce((n, i, s, u) => (n[i] != null || (n[i] = u.length - 1 === s ? e[o] : {}), n[i]), t), t), {});
+}
+function Ye(e, r) {
+  return r.split(".").reduce((t, o) => t && t[o], e);
+}
+/*!
+ * Original code by Chakra UI
+ * MIT Licensed, Copyright (c) 2019 Segun Adebayo.
+ *
+ * Credits to the Chakra UI team:
+ * https://github.com/chakra-ui/chakra-ui/blob/main/packages/utils/src/object.ts
+ */
+function qe(e, r) {
+  const t = {};
+  return r.forEach((o) => {
+    o in e && (t[o] = e[o]);
+  }), t;
+}
+const Qe = (e) => Object.keys(e);
+function Je(e, r) {
+  const t = {};
+  return Object.keys(e).forEach((o) => {
+    const n = e[o];
+    r(n, o, e) && (t[o] = n);
+  }), t;
+}
+function q(e) {
+  return Je(e, (r) => r != null);
+}
+const Ze = Be({ prefix: "hope" }), { css: Re, globalCss: le, getCssText: er, keyframes: Te } = Ze, de = {
   light: "hope-theme-light",
   dark: "hope-theme-dark"
 };
-function Ze(e) {
+function rr(e) {
   const r = Object.keys(e);
   return r.length > 0 && r.every((t) => ["light", "dark"].includes(t));
 }
@@ -20,30 +99,30 @@ function Ze(e) {
  * Credits to the Chakra UI team:
  * https://github.com/chakra-ui/chakra-ui/blob/2283faae3e361a8978a93b0ef7fd43b637153555/packages/utilities/breakpoint-utils/src/responsive.ts
  */
-function ft(e, r) {
-  return Ie(e) ? e.map((t) => t === null ? null : r(t)) : H(e) ? Be(e).reduce((t, o) => (t[o] = r(e[o]), t), {}) : e != null ? r(e) : null;
+function gt(e, r) {
+  return J(e) ? e.map((t) => t === null ? null : r(t)) : T(e) ? Qe(e).reduce((t, o) => (t[o] = r(e[o]), t), {}) : e != null ? r(e) : null;
 }
-function er(e, r) {
+function tr(e, r) {
   const t = r.map((o) => {
     var n;
     return (n = e[o]) != null ? n : null;
   });
-  for (; je(t) === null; )
+  for (; Ue(t) === null; )
     t.pop();
   return t;
 }
-function rr(e, r) {
+function or(e, r) {
   const t = {};
   return e.forEach((o, n) => {
     const i = r[n];
     o != null && (t[i] = o);
   }), t;
 }
-function tr(e, r) {
+function nr(e, r) {
   const t = Object.keys(e);
   return t.length > 0 && t.every((o) => r.includes(o));
 }
-const gt = [
+const bt = [
   "styleConfigOverride",
   "unstyled"
 ];
@@ -69,15 +148,15 @@ const p = {
   placeholderShown: (e, r) => `${e}:placeholder-shown ${r}`
 };
 function C(e) {
-  return Te((r) => e(r, "&"), "[role=group]", "[data-group]", ".group");
+  return $e((r) => e(r, "&"), "[role=group]", "[data-group]", ".group");
 }
 function x(e) {
-  return Te((r) => e(r, "~ &"), "[data-peer]", ".peer");
+  return $e((r) => e(r, "~ &"), "[data-peer]", ".peer");
 }
-function Te(e, ...r) {
+function $e(e, ...r) {
   return r.map(e).join(", ");
 }
-const or = "_light", K = "_dark", nr = `.${le.light} &:not([data-theme]), [data-theme=light] &:not([data-theme]), &[data-theme=light]`, ir = `.${le.dark} &:not([data-theme]), [data-theme=dark] &:not([data-theme]), &[data-theme=dark]`, sr = /* @__PURE__ */ new Map([
+const ir = "_light", Y = "_dark", sr = `.${de.light} &:not([data-theme]), [data-theme=light] &:not([data-theme]), &[data-theme=light]`, ar = `.${de.dark} &:not([data-theme]), [data-theme=dark] &:not([data-theme]), &[data-theme=dark]`, ur = /* @__PURE__ */ new Map([
   ["_hover", "&:hover, &[data-hover]"],
   ["_active", "&:active, &[data-active]"],
   ["_focus", "&:focus, &[data-focus]"],
@@ -134,9 +213,9 @@ const or = "_light", K = "_dark", nr = `.${le.light} &:not([data-theme]), [data-
   ["_ltr", "[dir=ltr] &, &[dir=ltr]"],
   ["_mediaDark", "@media (prefers-color-scheme: dark)"],
   ["_mediaReduceMotion", "@media (prefers-reduced-motion: reduce)"],
-  [or, nr],
-  [K, ir]
-]), ar = /* @__PURE__ */ new Map([
+  [ir, sr],
+  [Y, ar]
+]), cr = /* @__PURE__ */ new Map([
   ["borderX", ["borderRight", "borderLeft"]],
   ["borderY", ["borderTop", "borderBottom"]],
   ["bg", ["background"]],
@@ -190,15 +269,15 @@ const or = "_light", K = "_dark", nr = `.${le.light} &:not([data-theme]), [data-
  * Credits to the Chakra UI team:
  * https://github.com/chakra-ui/chakra-ui/blob/9de39921b983ad0eb2df7195e3b683c2e2e9e290/packages/components/styled-system/src/utils/expand-responsive.ts
  */
-const ur = (e) => (r) => {
+const lr = (e) => (r) => {
   if (!r.__breakpoints)
     return e;
   const { isResponsive: t, toArrayValue: o, medias: n } = r.__breakpoints, i = {}, s = {};
   for (const u in e) {
-    let a = S(e[u], r);
-    if (a == null || te(u, a, i))
+    let a = y(e[u], r);
+    if (a == null || oe(u, a, i))
       continue;
-    if (a = H(a) && t(a) ? o(a) : a, !Array.isArray(a)) {
+    if (a = T(a) && t(a) ? o(a) : a, !Array.isArray(a)) {
       i[u] = a;
       continue;
     }
@@ -207,10 +286,10 @@ const ur = (e) => (r) => {
       const d = n == null ? void 0 : n[c], m = a[c];
       if (m != null) {
         if (!d) {
-          te(u, m, i) || (i[u] = m);
+          oe(u, m, i) || (i[u] = m);
           continue;
         }
-        s[d] = s[d] || {}, te(u, m, s[d]) || (s[d][u] = m);
+        s[d] = s[d] || {}, oe(u, m, s[d]) || (s[d][u] = m);
       }
     }
   }
@@ -219,11 +298,11 @@ const ur = (e) => (r) => {
     ...s
   };
 };
-function te(e, r, t) {
-  if (!H(r) || !Ze(r))
+function oe(e, r, t) {
+  if (!T(r) || !rr(r))
     return !1;
   const { light: o, dark: n } = r;
-  return o != null && (t[e] = o), t[K] = t[K] || {}, n != null && (t[K][e] = n), !0;
+  return o != null && (t[e] = o), t[Y] = t[Y] || {}, n != null && (t[Y][e] = n), !0;
 }
 /*!
  * Original code by Chakra UI
@@ -232,47 +311,47 @@ function te(e, r, t) {
  * Credits to the Chakra UI team:
  * https://github.com/chakra-ui/chakra-ui/blob/2283faae3e361a8978a93b0ef7fd43b637153555/packages/utilities/breakpoint-utils/src/breakpoint.ts
  */
-function cr(e) {
+function dr(e) {
   const r = parseFloat(e.toString()), t = e.toString().replace(String(r), "");
   return { unitless: !t, value: r, unit: t };
 }
-function Y(e) {
+function Q(e) {
   if (e == null)
     return e;
-  const { unitless: r } = cr(e);
-  return r || Se(e) ? `${e}px` : e;
+  const { unitless: r } = dr(e);
+  return r || ke(e) ? `${e}px` : e;
 }
-const $e = (e, r) => parseInt(e[1], 10) > parseInt(r[1], 10) ? 1 : -1, de = (e) => Object.fromEntries(Object.entries(e).sort($e));
-function be(e) {
-  const r = de(e);
+const we = (e, r) => parseInt(e[1], 10) > parseInt(r[1], 10) ? 1 : -1, me = (e) => Object.fromEntries(Object.entries(e).sort(we));
+function he(e) {
+  const r = me(e);
   return Object.assign(Object.values(r), r);
 }
-function lr(e) {
-  const r = Object.keys(de(e));
+function mr(e) {
+  const r = Object.keys(me(e));
   return new Set(r);
 }
-function he(e) {
+function _e(e) {
   var t;
   if (!e)
     return e;
-  e = (t = Y(e)) != null ? t : e;
+  e = (t = Q(e)) != null ? t : e;
   const r = e.endsWith("px") ? -1 : -0.0625;
-  return Se(e) ? `${e + r}` : e.replace(/(\d+\.?\d*)/u, (o) => `${parseFloat(o) + r}`);
+  return ke(e) ? `${e + r}` : e.replace(/(\d+\.?\d*)/u, (o) => `${parseFloat(o) + r}`);
 }
 function X(e, r) {
   const t = ["@media screen"];
-  return e && t.push("and", `(min-width: ${Y(e)})`), r && t.push("and", `(max-width: ${Y(r)})`), t.join(" ");
+  return e && t.push("and", `(min-width: ${Q(e)})`), r && t.push("and", `(max-width: ${Q(r)})`), t.join(" ");
 }
-function dr(e) {
+function pr(e) {
   var i;
   if (!e)
     return null;
   e.base = (i = e.base) != null ? i : "0px";
-  const r = be(e), t = Object.entries(e).sort($e).map(([s, u], a, l) => {
+  const r = he(e), t = Object.entries(e).sort(we).map(([s, u], a, l) => {
     var d;
     let [, c] = (d = l[a + 1]) != null ? d : [];
-    return c = parseFloat(c) > 0 ? he(c) : void 0, {
-      _minW: he(u),
+    return c = parseFloat(c) > 0 ? _e(c) : void 0, {
+      _minW: _e(u),
       breakpoint: s,
       minW: u,
       maxW: c,
@@ -280,26 +359,26 @@ function dr(e) {
       minWQuery: X(u),
       minMaxQuery: X(u, c)
     };
-  }), o = lr(e), n = Array.from(o.values());
+  }), o = mr(e), n = Array.from(o.values());
   return {
     keys: o,
     normalized: r,
-    asObject: de(e),
-    asArray: be(e),
+    asObject: me(e),
+    asArray: he(e),
     details: t,
     medias: [null, ...r.map((s) => X(s)).slice(1)],
     isResponsive(s) {
-      return tr(s, n);
+      return nr(s, n);
     },
     toArrayValue(s) {
-      if (!H(s))
+      if (!T(s))
         throw new Error("toArrayValue: value must be an object");
-      return er(s, n);
+      return tr(s, n);
     },
     toObjectValue(s) {
       if (!Array.isArray(s))
         throw new Error("toObjectValue: value must be an array");
-      return rr(s, n);
+      return or(s, n);
     }
   };
 }
@@ -310,27 +389,27 @@ function dr(e) {
  * Credits to the Chakra UI team:
  * https://github.com/chakra-ui/chakra-ui/blob/7d7e04d53d871e324debe0a2cb3ff44d7dbf3bca/packages/components/styled-system/src/utils/create-transform.ts
  */
-const mr = [
+const fr = [
   "colors",
   "fonts",
   "fontWeights",
   "lineHeights",
   "shadows",
   "zIndices"
-], we = /!(important)?$/;
-function pr(e) {
-  return we.test(e);
+], Ee = /!(important)?$/;
+function gr(e) {
+  return Ee.test(e);
 }
-function fr(e) {
-  return e.replace(we, "").trim();
+function br(e) {
+  return e.replace(Ee, "").trim();
 }
-function gr(e, r, t) {
+function hr(e, r, t) {
   var s;
   if (e == null)
     return;
-  const o = String(e), n = fr(o);
-  let i = (s = t[r][n]) != null ? s : ze(t[r], n);
-  return i == null && (i = mr.includes(r) ? n : Y(n)), pr(o) ? `${i} !important` : i;
+  const o = String(e), n = br(o);
+  let i = (s = t[r][n]) != null ? s : Ye(t[r], n);
+  return i == null && (i = fr.includes(r) ? n : Q(n)), gr(o) ? `${i} !important` : i;
 }
 /*!
  * Original code by Chakra UI
@@ -339,31 +418,31 @@ function gr(e, r, t) {
  * Credits to the Chakra UI team:
  * https://github.com/chakra-ui/chakra-ui/blob/main/packages/styled-system/src/css.ts
  */
-function J(e, r) {
+function ee(e, r) {
   var n;
-  const t = {}, o = ur(e)(r);
+  const t = {}, o = lr(e)(r);
   for (let i in o) {
-    let s = S(o[i], r);
+    let s = y(o[i], r);
     if (s == null)
       continue;
     if (i.startsWith("_")) {
-      const a = sr.get(i);
+      const a = ur.get(i);
       if (a == null)
         continue;
       i = a;
     }
-    if (H(s)) {
+    if (T(s)) {
       t[i] = Object.assign(
         {},
         t[i],
-        J(s, r)
+        ee(s, r)
       );
       continue;
     }
-    const u = (n = ar.get(i)) != null ? n : [i];
+    const u = (n = cr.get(i)) != null ? n : [i];
     for (const a of u) {
       const l = r.themeMap[a];
-      l != null && (s = gr(s, l, r.vars)), t[a] = s;
+      l != null && (s = hr(s, l, r.vars)), t[a] = s;
     }
   }
   return t;
@@ -375,10 +454,10 @@ function J(e, r) {
  * Credits to the Mantinedev team:
  * https://github.com/mantinedev/mantine/blob/8546c580fdcaa9653edc6f4813103349a96cfb09/src/mantine-styles/src/theme/utils/to-rgba/to-rgba.ts
  */
-function br(e) {
+function _r(e) {
   return /^#?([0-9A-F]{3}){1,2}$/i.test(e);
 }
-function hr(e) {
+function xr(e) {
   let r = e.replace("#", "");
   if (r.length === 3) {
     const s = r.split("");
@@ -399,20 +478,20 @@ function hr(e) {
     a: 1
   };
 }
-function _r(e) {
+function yr(e) {
   const [r, t, o, n] = e.replace(/[^0-9,.]/g, "").split(",").map(Number);
   return { r, g: t, b: o, a: n || 1 };
 }
-function xr(e) {
-  return br(e) ? hr(e) : e.startsWith("rgb") ? _r(e) : {
+function Sr(e) {
+  return _r(e) ? xr(e) : e.startsWith("rgb") ? yr(e) : {
     r: 0,
     g: 0,
     b: 0,
     a: 1
   };
 }
-function oe(e) {
-  const { r, g: t, b: o } = xr(e);
+function ne(e) {
+  const { r, g: t, b: o } = Sr(e);
   return `${r} ${t} ${o}`;
 }
 /*!
@@ -422,12 +501,12 @@ function oe(e) {
  * Credits to the MUI team:
  * https://github.com/mui/material-ui/blob/master/packages/mui-joy/src/styles/extendTheme.ts
  */
-function w(e) {
+function E(e) {
   return {
     ...e,
-    mainChannel: oe(e[500]),
-    lightChannel: oe(e[100]),
-    darkChannel: oe(e[900])
+    mainChannel: ne(e[500]),
+    lightChannel: ne(e[100]),
+    darkChannel: ne(e[900])
   };
 }
 /*!
@@ -437,37 +516,37 @@ function w(e) {
  * Credits to the Chakra UI team:
  * https://github.com/chakra-ui/chakra-ui/blob/main/packages/styled-system/src/create-theme-vars/css-var.ts
  */
-const Z = "hope";
-function Sr(e, r = "-") {
+const re = "hope";
+function vr(e, r = "-") {
   return e.replace(/\s+/g, r);
 }
-function yr(e) {
-  const r = Sr(e.toString());
-  return kr(vr(r));
+function kr(e) {
+  const r = vr(e.toString());
+  return Rr(Cr(r));
 }
-function vr(e) {
+function Cr(e) {
   return e.includes("\\.") ? e : !Number.isInteger(parseFloat(e.toString())) ? e.replace(".", "\\.") : e;
 }
-function kr(e) {
+function Rr(e) {
   return e.replace(/[!-,/:-@[-^`{-~]/g, "\\$&");
 }
-function Cr(e, r = "") {
+function Tr(e, r = "") {
   return [r, e].filter(Boolean).join("-");
 }
-function Rr(e, r) {
+function $r(e, r) {
   return `var(${e}${r ? `, ${r}` : ""})`;
 }
-function Tr(e, r = "") {
-  return yr(`--${Cr(e, r)}`);
+function wr(e, r = "") {
+  return kr(`--${Tr(e, r)}`);
 }
-function $r(e, r, t = Z) {
-  const o = Tr(e, t);
+function Er(e, r, t = re) {
+  const o = wr(e, t);
   return {
     variable: o,
-    reference: Rr(o, r)
+    reference: $r(o, r)
   };
 }
-function wr(e = Z) {
+function Or(e = re) {
   return (r) => `var(--${e ? `${e}-` : ""}${r})`;
 }
 /*!
@@ -477,29 +556,29 @@ function wr(e = Z) {
  * Credits to the Chakra UI team:
  * https://github.com/chakra-ui/chakra-ui/blob/main/packages/styled-system/src/create-theme-vars/create-theme-vars.ts
  */
-const W = "__";
-function ne(e, r, t) {
-  return $r(String(r).replace(e, "-"), void 0, t);
+const H = "__";
+function ie(e, r, t) {
+  return Er(String(r).replace(e, "-"), void 0, t);
 }
-function Er(e, r) {
-  const t = {}, o = {}, n = {}, { colors: i, ...s } = e, u = { colors: i.light }, a = { colors: i.dark }, l = re(u, W), c = re(a, W), d = re(s, W), m = new RegExp(`(${W}|\\.)`, "g");
+function Pr(e, r) {
+  const t = {}, o = {}, n = {}, { colors: i, ...s } = e, u = { colors: i.light }, a = { colors: i.dark }, l = K(u, H), c = K(a, H), d = K(s, H), m = new RegExp(`(${H}|\\.)`, "g");
   for (const [f, h] of Object.entries(l)) {
-    const { variable: g, reference: y } = ne(m, f, r);
-    t[g] = h, n[f] = y;
+    const { variable: g, reference: S } = ie(m, f, r);
+    t[g] = h, n[f] = S;
   }
   for (const [f, h] of Object.entries(c)) {
-    const { variable: g } = ne(m, f, r);
+    const { variable: g } = ie(m, f, r);
     o[g] = h;
   }
   for (const [f, h] of Object.entries(d)) {
-    const { variable: g, reference: y } = ne(m, f, r);
-    t[g] = h, n[f] = y;
+    const { variable: g, reference: S } = ie(m, f, r);
+    t[g] = h, n[f] = S;
   }
-  const T = Ae(n, W);
+  const $ = Ke(n, H);
   return { cssVarsValues: {
     root: t,
     dark: o
-  }, vars: T };
+  }, vars: $ };
 }
 /*!
  * Original code by Chakra UI
@@ -508,7 +587,7 @@ function Er(e, r) {
  * Credits to the Chakra UI team:
  * https://github.com/chakra-ui/chakra-ui/blob/main/packages/styled-system/src/create-theme-vars/to-css-var.ts
  */
-const Or = [
+const Nr = [
   "colors",
   "fonts",
   "fontSizes",
@@ -522,19 +601,19 @@ const Or = [
   "zIndices",
   "breakpoints"
 ];
-function Pr(e) {
-  return We(e, Or);
+function Vr(e) {
+  return qe(e, Nr);
 }
-function Nr(e) {
+function Lr(e) {
   const { vars: r, __cssVarsValues: t, __breakpoints: o, ...n } = e;
   return n;
 }
-function Ee(e) {
-  const r = Nr(e), t = Pr(r), { cssVarsValues: o, vars: n } = Er(t, r.cssVarPrefix);
+function Oe(e) {
+  const r = Lr(e), t = Vr(r), { cssVarsValues: o, vars: n } = Pr(t, r.cssVarPrefix);
   return Object.assign(r, {
     vars: n,
     __cssVarsValues: o,
-    __breakpoints: dr(r.breakpoints)
+    __breakpoints: pr(r.breakpoints)
   }), r;
 }
 /*!
@@ -550,8 +629,8 @@ function Ee(e) {
  * Credits to the Chakra UI team:
  * https://github.com/chakra-ui/chakra-ui/blob/main/packages/theme/src/foundations/colors.ts
  */
-function Oe(e) {
-  const r = wr(e);
+function Pe(e) {
+  const r = Or(e);
   return {
     light: {
       whiteAlpha: {
@@ -578,7 +657,7 @@ function Oe(e) {
         800: "rgba(0, 0, 0, 0.80)",
         900: "rgba(0, 0, 0, 0.92)"
       },
-      primary: w({
+      primary: E({
         50: "#e6f6ff",
         100: "#bae3ff",
         200: "#7cc4fa",
@@ -590,7 +669,7 @@ function Oe(e) {
         800: "#01337d",
         900: "#002159"
       }),
-      neutral: w({
+      neutral: E({
         50: "#f9fafa",
         100: "#f4f5f6",
         200: "#e3e5e8",
@@ -602,7 +681,7 @@ function Oe(e) {
         800: "#22252a",
         900: "#151619"
       }),
-      success: w({
+      success: E({
         50: "#e3f9e5",
         100: "#c1eac5",
         200: "#a3d9a5",
@@ -614,7 +693,7 @@ function Oe(e) {
         800: "#0e5814",
         900: "#05400a"
       }),
-      info: w({
+      info: E({
         50: "#eae2f8",
         100: "#cfbcf2",
         200: "#a081d9",
@@ -626,7 +705,7 @@ function Oe(e) {
         800: "#34126f",
         900: "#240754"
       }),
-      warning: w({
+      warning: E({
         50: "#fffbea",
         100: "#fff3c4",
         200: "#fce588",
@@ -638,7 +717,7 @@ function Oe(e) {
         800: "#b44d12",
         900: "#8d2b0b"
       }),
-      danger: w({
+      danger: E({
         50: "#ffe3e3",
         100: "#ffbdbd",
         200: "#ff9b9b",
@@ -674,7 +753,7 @@ function Oe(e) {
  * Credits to the WorkOS team:
  * https://github.com/stitchesjs/stitches/blob/96e8a523caf1724cf25bb0d07ee823365bbedd9c/packages/core/src/default/defaultThemeMap.js
  */
-const Vr = {
+const jr = {
   gap: "space",
   gridGap: "space",
   columnGap: "space",
@@ -776,7 +855,7 @@ const Vr = {
   boxShadow: "shadows",
   textShadow: "shadows",
   zIndex: "zIndices"
-}, _e = {
+}, xe = {
   "0.5": "0.125rem",
   1: "0.25rem",
   "1.5": "0.375rem",
@@ -809,8 +888,8 @@ const Vr = {
   72: "18rem",
   80: "20rem",
   96: "24rem"
-}, Lr = {
-  colors: Oe(Z),
+}, Br = {
+  colors: Pe(re),
   fonts: {
     sans: "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'",
     serif: "ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif",
@@ -866,9 +945,9 @@ const Vr = {
     wider: "0.05em",
     widest: "0.1em"
   },
-  space: _e,
+  space: xe,
   sizes: {
-    ..._e,
+    ...xe,
     max: "max-content",
     min: "min-content",
     full: "100%",
@@ -931,22 +1010,22 @@ const Vr = {
     xl: "1280px",
     "2xl": "1536px"
   }
-}, Ir = {
-  ...Lr,
-  cssVarPrefix: Z,
-  themeMap: Vr,
+}, Ar = {
+  ...Br,
+  cssVarPrefix: re,
+  themeMap: jr,
   components: {}
-}, me = Ee(Ir);
-function bt(e) {
-  let r = me;
+}, pe = Oe(Ar);
+function ht(e) {
+  let r = pe;
   e.cssVarPrefix != null && (r = {
     ...r,
-    colors: Oe(e.cssVarPrefix)
+    colors: Pe(e.cssVarPrefix)
   });
   const t = {
     value: r
   };
-  return se(t, "value", e), Ee(t.value);
+  return ae(t, "value", e), Oe(t.value);
 }
 /*!
  * Original code by Mantinedev
@@ -955,7 +1034,7 @@ function bt(e) {
  * Credits to the Mantinedev team:
  * https://github.com/mantinedev/mantine/tree/master/src/mantine-styles/src/theme/functions/fns/focus-styles
  */
-function ht(e) {
+function _t(e) {
   return {
     WebkitTapHighlightColor: "transparent",
     "&:focus": {
@@ -967,10 +1046,10 @@ function ht(e) {
     }
   };
 }
-function Br(e) {
-  ce({
+function Ir(e) {
+  le({
     ":root": e.__cssVarsValues.root,
-    [`.${le.dark}`]: e.__cssVarsValues.dark
+    [`.${de.dark}`]: e.__cssVarsValues.dark
   })();
 }
 /*!
@@ -979,8 +1058,8 @@ function Br(e) {
  * Credits to Joshua Comeau:
  * https://www.joshwcomeau.com/css/custom-css-reset/#the-css-reset
  */
-function jr(e) {
-  ce({
+function zr(e) {
+  le({
     "*, *::before, *::after": {
       boxSizing: "border-box"
     },
@@ -1015,29 +1094,29 @@ function jr(e) {
     }
   })();
 }
-const Pe = Ke(me);
-function O() {
-  return Qe(Pe);
+const Ne = Me(pe);
+function P() {
+  return Fe(Ne);
 }
-function zr(e) {
-  const r = O();
+function Wr(e) {
+  const r = P();
   return R(() => {
     var t;
     if (e != null)
       return (t = r.components[e]) != null ? t : void 0;
   });
 }
-function _t(e, r, t) {
-  const o = O();
-  return Ye(r, () => {
+function xt(e, r, t) {
+  const o = P();
+  return De(r, () => {
     var i, s;
     return (s = (i = o.components[e]) == null ? void 0 : i.defaultProps) != null ? s : {};
   }, t);
 }
-function xt(e) {
+function yt(e) {
   var t;
-  const r = (t = e.theme) != null ? t : me;
-  return Br(r), e.withCssReset && jr(r.vars), ve(Pe.Provider, {
+  const r = (t = e.theme) != null ? t : pe;
+  return Ir(r), e.withCssReset && zr(r.vars), Se(Ne.Provider, {
     value: r,
     get children() {
       return e.children;
@@ -1045,30 +1124,30 @@ function xt(e) {
   });
 }
 function St(e) {
-  const r = q((t) => {
+  const r = Z((t) => {
     const {
       "@import": o,
       "@font-face": n,
       ...i
-    } = S(e, t), s = Object.entries(i).reduce((u, [a, l]) => (u[a] = J(l, t), u), {});
-    ce({
+    } = y(e, t), s = Object.entries(i).reduce((u, [a, l]) => (u[a] = ee(l, t), u), {});
+    le({
       "@import": o != null ? o : [],
       "@font-face": n != null ? n : {},
       ...s
     })();
   });
   return function() {
-    const o = O();
+    const o = P();
     r(o);
   };
 }
-function yt(e) {
+function vt(e) {
   return e;
 }
-function E(e, r) {
-  return Ce(J(e, r))().className;
+function O(e, r) {
+  return Re(ee(e, r))().className;
 }
-function ae(e, r) {
+function ue(e, r) {
   for (const t of Object.keys(e))
     if (e[t] !== r[t])
       return !1;
@@ -1081,7 +1160,7 @@ function ae(e, r) {
  * Credits to the SEEK team:
  * https://github.com/seek-oss/vanilla-extract/blob/master/packages/recipes/src/createRuntimeFn.ts
  */
-function xe(e, r) {
+function ye(e, r) {
   return Object.entries(e).reduce((t, [o, n]) => {
     const {
       baseStyle: i = {},
@@ -1089,67 +1168,67 @@ function xe(e, r) {
       compoundVariants: u = []
     } = n;
     return t[o] = {
-      baseClassName: E(i, r),
+      baseClassName: O(i, r),
       variantClassNames: Object.entries(s).reduce((a, [l, c]) => (a[l] = Object.entries(c).reduce(
-        (d, [m, T]) => (d[m] = E(T, r), d),
+        (d, [m, $]) => (d[m] = O($, r), d),
         {}
       ), a), {}),
       compoundVariants: u.map((a) => [
         a.variants,
-        E(a.style, r)
+        O(a.style, r)
       ])
     }, t;
   }, {});
 }
-function vt(e, r) {
+function kt(e, r) {
   let t, o, n, i, s = [], u;
-  const a = q(
+  const a = Z(
     (l, c, d) => {
-      t = S(e, c), o = xe(
+      t = y(e, c), o = ye(
         t,
         c
-      ), n = S(d, c), i = n && xe(n, c), s = Object.keys(t), u = Object.fromEntries(
+      ), n = y(d, c), i = n && ye(n, c), s = Object.keys(t), u = Object.fromEntries(
         s.map((m) => [m, `hope-${l}-${m}`])
       );
     }
   );
   return function(c, d) {
-    var y;
-    const m = O(), T = zr(c);
-    a(c, m, (y = T()) == null ? void 0 : y.styleConfigOverride);
-    const M = R(() => S(d.styleConfigOverride, m)), f = R(() => {
-      const [v, b] = ke(d, ["styleConfigOverride", "unstyled"]);
+    var S;
+    const m = P(), $ = Wr(c);
+    a(c, m, (S = $()) == null ? void 0 : S.styleConfigOverride);
+    const M = R(() => y(d.styleConfigOverride, m)), f = R(() => {
+      const [v, b] = ve(d, ["styleConfigOverride", "unstyled"]);
       return {
         ...r,
-        ...Q(b)
+        ...q(b)
       };
     }), h = R(() => s.reduce((v, b) => {
-      var P, N, V, L, I, k, B, j, pe, fe, ge;
+      var N, V, L, j, B, k, A, I, fe, ge, be;
       let _ = "", F = {}, D = [];
-      d.unstyled || (_ = (P = o[b].baseClassName) != null ? P : "", F = (N = o[b].variantClassNames) != null ? N : {}, D = (V = o[b].compoundVariants) != null ? V : []);
-      const ee = (I = (L = i == null ? void 0 : i[b]) == null ? void 0 : L.baseClassName) != null ? I : "", G = (B = (k = i == null ? void 0 : i[b]) == null ? void 0 : k.variantClassNames) != null ? B : {}, U = (pe = (j = i == null ? void 0 : i[b]) == null ? void 0 : j.compoundVariants) != null ? pe : [], $ = [u[b], _, ee];
+      d.unstyled || (_ = (N = o[b].baseClassName) != null ? N : "", F = (V = o[b].variantClassNames) != null ? V : {}, D = (L = o[b].compoundVariants) != null ? L : []);
+      const te = (B = (j = i == null ? void 0 : i[b]) == null ? void 0 : j.baseClassName) != null ? B : "", G = (A = (k = i == null ? void 0 : i[b]) == null ? void 0 : k.variantClassNames) != null ? A : {}, U = (fe = (I = i == null ? void 0 : i[b]) == null ? void 0 : I.compoundVariants) != null ? fe : [], w = [u[b], _, te];
       for (const z in f()) {
-        const A = f()[z];
-        A != null && ($.push((fe = F[z]) == null ? void 0 : fe[String(A)]), $.push((ge = G[z]) == null ? void 0 : ge[String(A)]));
+        const W = f()[z];
+        W != null && (w.push((ge = F[z]) == null ? void 0 : ge[String(W)]), w.push((be = G[z]) == null ? void 0 : be[String(W)]));
       }
-      for (const [z, A] of [...D, ...U])
-        ae(z, f()) && $.push(A);
-      return v[b] = ue(...$), v;
+      for (const [z, W] of [...D, ...U])
+        ue(z, f()) && w.push(W);
+      return v[b] = ce(...w), v;
     }, {})), g = R(() => {
       const v = M();
       return v == null ? {} : s.reduce((b, _) => {
-        var G, U, $, P, N, V, L, I;
-        const F = (U = (G = v[_]) == null ? void 0 : G.baseStyle) != null ? U : {}, D = (P = ($ = v[_]) == null ? void 0 : $.variants) != null ? P : {}, ee = (V = (N = v[_]) == null ? void 0 : N.compoundVariants) != null ? V : [];
+        var G, U, w, N, V, L, j, B;
+        const F = (U = (G = v[_]) == null ? void 0 : G.baseStyle) != null ? U : {}, D = (N = (w = v[_]) == null ? void 0 : w.variants) != null ? N : {}, te = (L = (V = v[_]) == null ? void 0 : V.compoundVariants) != null ? L : [];
         b[_] = F;
         for (const k in f()) {
-          const B = f()[k];
-          if (B == null)
+          const A = f()[k];
+          if (A == null)
             continue;
-          const j = (I = (L = D[k]) == null ? void 0 : L[String(B)]) != null ? I : {};
-          ye(j) || se(b, _, j);
+          const I = (B = (j = D[k]) == null ? void 0 : j[String(A)]) != null ? B : {};
+          Ce(I) || ae(b, _, I);
         }
-        for (const k of ee)
-          ae(k.variants, f()) && se(b, _, k.style);
+        for (const k of te)
+          ue(k.variants, f()) && ae(b, _, k.style);
         return b;
       }, {});
     });
@@ -1163,21 +1242,21 @@ function vt(e, r) {
  * Credits to the SEEK team:
  * https://github.com/seek-oss/vanilla-extract/blob/master/packages/recipes/src/createRuntimeFn.ts
  */
-function Ne(e, r) {
+function Ve(e, r) {
   const { baseStyle: t = {}, variants: o = {}, compoundVariants: n = [] } = e;
   return {
-    baseClassName: E(t, r),
+    baseClassName: O(t, r),
     variantClassNames: Object.entries(o).reduce((i, [s, u]) => (i[s] = Object.entries(u).reduce(
-      (a, [l, c]) => (a[l] = E(c, r), a),
+      (a, [l, c]) => (a[l] = O(c, r), a),
       {}
     ), i), {}),
     compoundVariants: n.map((i) => [
       i.variants,
-      E(i.style, r)
+      O(i.style, r)
     ])
   };
 }
-function Ve(e, r) {
+function Le(e, r) {
   var i;
   const { variantClassNames: t = {}, compoundVariants: o = [] } = e, n = [];
   for (const s in r) {
@@ -1185,28 +1264,28 @@ function Ve(e, r) {
     u != null && n.push((i = t[s]) == null ? void 0 : i[String(u)]);
   }
   for (const [s, u] of o)
-    ae(s, r) && n.push(u);
+    ue(s, r) && n.push(u);
   return n;
 }
-function kt(e) {
+function Ct(e) {
   let r, t;
-  const o = q((n) => {
-    r = S(e, n), t = Ne(r, n);
+  const o = Z((n) => {
+    r = y(e, n), t = Ve(r, n);
   });
   return function(i = {}) {
-    const s = O();
+    const s = P();
     return o(s), R(() => {
       if (r == null || t == null)
         return "";
       const a = {
         ...r.defaultVariants,
-        ...Q(i)
-      }, l = Ve(t, a);
-      return ue(t.baseClassName, l);
+        ...q(i)
+      }, l = Le(t, a);
+      return ce(t.baseClassName, l);
     });
   };
 }
-const Ar = {
+const Hr = {
   border: !0,
   borderWidth: !0,
   borderStyle: !0,
@@ -1229,14 +1308,14 @@ const Ar = {
   borderLeftColor: !0,
   borderX: !0,
   borderY: !0
-}, Wr = {
+}, Mr = {
   color: !0,
   background: !0,
   bg: !0,
   backgroundColor: !0,
   bgColor: !0,
   opacity: !0
-}, Hr = {
+}, Fr = {
   alignItems: !0,
   alignContent: !0,
   alignSelf: !0,
@@ -1250,7 +1329,7 @@ const Ar = {
   flexShrink: !0,
   flexBasis: !0,
   order: !0
-}, Mr = {
+}, Dr = {
   gridTemplate: !0,
   gridTemplateColumns: !0,
   gridTemplateRows: !0,
@@ -1271,7 +1350,7 @@ const Ar = {
   gap: !0,
   rowGap: !0,
   columnGap: !0
-}, Fr = {
+}, Gr = {
   appearance: !0,
   userSelect: !0,
   pointerEvents: !0,
@@ -1280,14 +1359,14 @@ const Ar = {
   outline: !0,
   outlineOffset: !0,
   outlineColor: !0
-}, Dr = {
+}, Ur = {
   display: !0,
   d: !0,
   verticalAlign: !0,
   overflow: !0,
   overflowX: !0,
   overflowY: !0
-}, Gr = {
+}, Xr = {
   margin: !0,
   marginTop: !0,
   marginRight: !0,
@@ -1304,7 +1383,7 @@ const Ar = {
   ms: !0,
   mx: !0,
   my: !0
-}, Ur = {
+}, Kr = {
   padding: !0,
   paddingTop: !0,
   paddingRight: !0,
@@ -1321,7 +1400,7 @@ const Ar = {
   ps: !0,
   px: !0,
   py: !0
-}, Xr = {
+}, Yr = {
   position: !0,
   pos: !0,
   zIndex: !0,
@@ -1329,7 +1408,7 @@ const Ar = {
   right: !0,
   bottom: !0,
   left: !0
-}, Kr = {
+}, qr = {
   borderRadius: !0,
   borderTopRightRadius: !0,
   borderTopLeftRadius: !0,
@@ -1348,7 +1427,7 @@ const Ar = {
   textShadow: !0,
   boxShadow: !0,
   shadow: !0
-}, Yr = {
+}, Jr = {
   width: !0,
   minWidth: !0,
   maxWidth: !0,
@@ -1362,11 +1441,11 @@ const Ar = {
   minH: !0,
   maxH: !0,
   boxSize: !0
-}, qr = {
+}, Zr = {
   transform: !0,
   transformOrigin: !0,
   clipPath: !0
-}, Jr = {
+}, et = {
   transition: !0,
   transitionProperty: !0,
   transitionTimingFunction: !0,
@@ -1374,7 +1453,7 @@ const Ar = {
   transitionDelay: !0,
   animation: !0,
   willChange: !0
-}, Zr = {
+}, rt = {
   fontFamily: !0,
   fontSize: !0,
   fontWeight: !0,
@@ -1384,10 +1463,10 @@ const Ar = {
   fontStyle: !0,
   textTransform: !0,
   textDecoration: !0
-}, et = {
+}, tt = {
   objectFit: !0,
   objectPosition: !0
-}, rt = {
+}, ot = {
   _hover: !0,
   _active: !0,
   _focus: !0,
@@ -1446,9 +1525,7 @@ const Ar = {
   _mediaReduceMotion: !0,
   _dark: !0,
   _light: !0
-}, tt = {
-  ...Ar,
-  ...Wr,
+}, nt = {
   ...Hr,
   ...Mr,
   ...Fr,
@@ -1457,119 +1534,122 @@ const Ar = {
   ...Ur,
   ...Xr,
   ...Kr,
-  ...Qr,
   ...Yr,
   ...qr,
+  ...Qr,
   ...Jr,
   ...Zr,
   ...et,
-  ...rt
+  ...rt,
+  ...tt,
+  ...ot
 };
-function ot(e) {
-  return Object.keys(e).filter((r) => r in tt);
+function it(e) {
+  return Object.keys(e).filter((r) => r in nt);
 }
-const Le = /* @__PURE__ */ new Map([
+const je = /* @__PURE__ */ new Map([
   ["htmlWidth", "width"],
   ["htmlHeight", "height"],
   ["htmlSize", "size"]
 ]);
-function nt(e) {
+function st(e) {
   return Object.entries(e).reduce((r, [t, o]) => {
-    const n = Le.get(t);
+    const n = je.get(t);
     return n != null && o != null && (r[n] = o), r;
   }, {});
 }
-const it = Ce({});
-function ie(e, r, t) {
+const at = Re({});
+function se(e, r, t) {
   let o, n, i = [];
-  const s = q((a) => {
-    r != null && (o = S(r, a), n = Ne(o, a), i = o.variants ? Object.keys(o.variants) : []);
+  const s = Z((a) => {
+    r != null && (o = y(r, a), n = Ve(o, a), i = o.variants ? Object.keys(o.variants) : []);
   }), u = (a) => {
-    const l = O();
+    const l = P();
     s(l);
-    const [c, d, m, T, M] = ke(
+    const [c, d, m, $, M] = ve(
       a,
       ["as", "class", "sx", "__css"],
-      [...Le.keys()],
+      [...je.keys()],
       i,
-      ot(a)
+      it(a)
     ), f = R(() => {
       if (n == null)
         return [];
       const g = {
         ...o == null ? void 0 : o.defaultVariants,
-        ...Q(m)
+        ...q(m)
       };
-      return Ve(n, g);
+      return Le(n, g);
     }), h = R(() => {
-      const g = Object.assign({}, c.__css, Q(T), ...He(c.sx).map((y) => S(y, l)));
-      if (!ye(g))
-        return it({
-          css: J(g, l)
+      const g = Object.assign({}, c.__css, q($), ...Xe(c.sx).map((S) => y(S, l)));
+      if (!Ce(g))
+        return at({
+          css: ee(g, l)
         }).className;
     });
-    return ve(Fe, De({
+    return Se(Ae, Ie({
       get component() {
         var g;
         return (g = c.as) != null ? g : e;
       },
       get class() {
-        return ue(t, n == null ? void 0 : n.baseClassName, ...f(), h(), c.class) || void 0;
+        return ce(t, n == null ? void 0 : n.baseClassName, ...f(), h(), c.class) || void 0;
       }
-    }, () => nt(d), M));
+    }, () => st(d), M));
   };
   return t != null && (u.toString = () => `.${t}`), u;
 }
-function st() {
+function ut() {
   const e = /* @__PURE__ */ new Map();
-  return new Proxy(ie, {
+  return new Proxy(se, {
     apply(r, t, o) {
-      return ie(...o);
+      return se(...o);
     },
     get(r, t) {
-      return e.has(t) || e.set(t, ie(t)), e.get(t);
+      return e.has(t) || e.set(t, se(t)), e.get(t);
     }
   });
 }
-const Ct = st(), at = ["<style", ' id="stitches">', "</style>"];
-function Rt() {
-  Ge(() => Ue(at, Xe(), Je()));
+const Rt = ut();
+var ct = ["<style", ' id="stitches">', "</style>"];
+function Tt() {
+  ze(() => We(ct, He(), er()));
 }
-const Tt = Re({
+const $t = Te({
   from: { transform: "rotate(0deg)" },
   to: { transform: "rotate(360deg)" }
-}), $t = Re({
+}), wt = Te({
   from: { opacity: 0 },
   to: { opacity: 1 }
 });
 export {
-  le as COLOR_MODE_CLASSNAMES,
-  me as DEFAULT_THEME,
-  Vr as DEFAULT_THEME_MAP,
-  gt as STYLE_CONFIG_PROP_NAMES,
-  xt as ThemeProvider,
-  rr as arrayToObjectNotation,
-  Ne as computeStyleOptions,
+  de as COLOR_MODE_CLASSNAMES,
+  pe as DEFAULT_THEME,
+  jr as DEFAULT_THEME_MAP,
+  bt as STYLE_CONFIG_PROP_NAMES,
+  yt as ThemeProvider,
+  or as arrayToObjectNotation,
+  Ve as computeStyleOptions,
   St as createGlobalStyles,
-  yt as createHopeComponent,
-  w as createPalette,
-  vt as createStyleConfig,
-  kt as createStyles,
-  bt as extendTheme,
-  $t as fadeIn,
-  ht as focusStyles,
-  Ve as getSelectedVariantClassNames,
-  Ct as hope,
-  Rt as injectCriticalStyle,
-  Ze as isColorModeObjectLike,
-  tr as isResponsiveObjectLike,
-  Re as keyframes,
-  ft as mapResponsive,
-  _t as mergeThemeProps,
-  er as objectToArrayNotation,
-  Ot as pack,
-  gr as resolveTokenValue,
-  Tt as spin,
-  zr as useComponentTheme,
-  O as useTheme
+  vt as createHopeComponent,
+  E as createPalette,
+  kt as createStyleConfig,
+  Ct as createStyles,
+  ht as extendTheme,
+  wt as fadeIn,
+  _t as focusStyles,
+  Le as getSelectedVariantClassNames,
+  Rt as hope,
+  Tt as injectCriticalStyle,
+  rr as isColorModeObjectLike,
+  nr as isResponsiveObjectLike,
+  Te as keyframes,
+  gt as mapResponsive,
+  xt as mergeThemeProps,
+  tr as objectToArrayNotation,
+  Xe as pack,
+  hr as resolveTokenValue,
+  $t as spin,
+  Wr as useComponentTheme,
+  P as useTheme
 };

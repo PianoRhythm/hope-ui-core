@@ -54,7 +54,7 @@ function itHasSemanticClass(Comp, requiredProps, semanticClass, Wrapper = props 
   });
 }
 
-const _tmpl$$1 = /*#__PURE__*/template(`<mark data-test-prop></mark>`, 2);
+var _tmpl$$1 = /*#__PURE__*/template(`<mark data-test-prop>`);
 function itIsPolymorphic(Comp, requiredProps, selector, Wrapper = props => createComponent(Fragment, {
   get children() {
     return props.children;
@@ -66,7 +66,7 @@ function itIsPolymorphic(Comp, requiredProps, selector, Wrapper = props => creat
     };
     const TestComponent = props => {
       return (() => {
-        const _el$ = _tmpl$$1.cloneNode(true);
+        var _el$ = _tmpl$$1();
         spread(_el$, props, false, false);
         return _el$;
       })();
@@ -95,7 +95,7 @@ function itIsPolymorphic(Comp, requiredProps, selector, Wrapper = props => creat
   });
 }
 
-const _tmpl$ = /*#__PURE__*/template(`<span data-testid="test-children">test children</span>`, 2);
+var _tmpl$ = /*#__PURE__*/template(`<span data-testid=test-children>test children`);
 function itRendersChildren(Comp, requiredProps, Wrapper = props => createComponent(Fragment, {
   get children() {
     return props.children;
@@ -106,7 +106,7 @@ function itRendersChildren(Comp, requiredProps, Wrapper = props => createCompone
       get children() {
         return createComponent(Comp, mergeProps(requiredProps, {
           get children() {
-            return _tmpl$.cloneNode(true);
+            return _tmpl$();
           }
         }));
       }
@@ -145,7 +145,7 @@ function itSupportsRef(Comp, requiredProps, refType, refProp = "ref", Wrapper = 
       get children() {
         return createComponent(Comp, mergeProps(requiredProps, {
           ref(r$) {
-            const _ref$ = ref;
+            var _ref$ = ref;
             typeof _ref$ === "function" ? _ref$(r$) : ref = r$;
           }
         }));

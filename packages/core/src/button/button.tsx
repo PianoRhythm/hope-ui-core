@@ -84,7 +84,7 @@ export const Button = createHopeComponent<"button", ButtonProps>(props => {
   );
 
   const [isNativeButton, setIsNativeButton] = createSignal(
-    tagName() != null && isButton({ tagName: tagName(), type: local.type })
+    tagName() != null && isButton({ tagName: tagName()!, type: local.type })
   );
 
   const type = createMemo(() => {
